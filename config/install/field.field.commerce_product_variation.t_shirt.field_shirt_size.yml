@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.t_shirt
+    - field.storage.commerce_product_variation.field_shirt_size
+    - taxonomy.vocabulary.size
+  module:
+    - commerce_product
+third_party_settings:
+  commerce_product:
+    attribute_widget_title: Size
+    attribute_widget: radios
+    attribute_field: true
+id: commerce_product_variation.t_shirt.field_shirt_size
+field_name: field_shirt_size
+entity_type: commerce_product_variation
+bundle: t_shirt
+label: 'Shirt size'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      size: size
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

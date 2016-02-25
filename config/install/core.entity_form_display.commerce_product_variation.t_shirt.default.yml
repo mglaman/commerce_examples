@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.t_shirt
+    - field.field.commerce_product_variation.t_shirt.field_shirt_color
+    - field.field.commerce_product_variation.t_shirt.field_shirt_size
+  module:
+    - commerce_price
+id: commerce_product_variation.t_shirt.default
+targetEntityType: commerce_product_variation
+bundle: t_shirt
+mode: default
+content:
+  field_shirt_color:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_shirt_size:
+    type: entity_reference_autocomplete
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  price:
+    type: commerce_price_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  sku:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/commerce_demo",
+  "type": "drupal-module",
+  "description": "Commerce demo stuff",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/commerce_demo",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/commerce_demo",
+    "source": "http://cgit.drupalcode.org/commerce_demo"
+  },
+  "require": { }
+}

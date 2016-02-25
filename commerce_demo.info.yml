@@ -1,0 +1,9 @@
+name: Commerce Demo
+type: module
+description: Commerce demo stuff
+core: 8.x
+package: Custom
+dependencies:
+  - taxonomy
+  - commerce_store
+  - commerce_product

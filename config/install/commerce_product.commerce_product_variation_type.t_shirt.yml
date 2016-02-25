@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: t_shirt
+label: T-Shirt
+lineItemType: product_variation

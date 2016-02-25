@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.t_shirts
+    - field.field.commerce_product.t_shirts.body
+    - field.field.commerce_product.t_shirts.stores
+    - field.field.commerce_product.t_shirts.variations
+  module:
+    - commerce
+    - inline_entity_form
+    - path
+    - text
+id: commerce_product.t_shirts.default
+targetEntityType: commerce_product
+bundle: t_shirts
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  stores:
+    type: commerce_entity_select
+    weight: -10
+    settings:
+      autocomplete_threshold: 7
+      autocomplete_size: 60
+      autocomplete_placeholder: ''
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  variations:
+    type: inline_entity_form_complex
+    weight: 10
+    settings:
+      override_labels: true
+      label_singular: variation
+      label_plural: variations
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+    third_party_settings: {  }
+hidden:
+  status: true

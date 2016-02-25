@@ -1,0 +1,20 @@
+<?php
+
+function commerce_demo_install() {
+  $currency_importer = \Drupal::service('commerce_price.currency_importer');
+  $store_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_store');
+
+  $currency_importer->import('USD');
+  $store_values = [
+    'type' => 'default',
+    'uid' => 1,
+    'name' => 'Demo store',
+    'mail' => 'admin@example.com',
+    'address' => [
+      'country_code' => 'US',
+    ],
+    'default_currency' => 'USD',
+  ];
+  $store = $store_storage->create($store_values);
+  $store->save();
+}
