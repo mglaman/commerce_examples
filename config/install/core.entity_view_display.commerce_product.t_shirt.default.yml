@@ -2,16 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - commerce_product.commerce_product_type.t_shirts
-    - field.field.commerce_product.t_shirts.body
-    - field.field.commerce_product.t_shirts.stores
-    - field.field.commerce_product.t_shirts.variations
+    - commerce_product.commerce_product_type.t_shirt
+    - field.field.commerce_product.t_shirt.body
+    - field.field.commerce_product.t_shirt.stores
+    - field.field.commerce_product.t_shirt.variations
   module:
     - commerce_product
     - text
-id: commerce_product.t_shirts.default
+id: commerce_product.t_shirt.default
 targetEntityType: commerce_product
-bundle: t_shirts
+bundle: t_shirt
 mode: default
 content:
   body:
