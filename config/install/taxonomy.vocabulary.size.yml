@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Size
-vid: size
-description: 'Shirt sizes'
-hierarchy: 0
-weight: 0

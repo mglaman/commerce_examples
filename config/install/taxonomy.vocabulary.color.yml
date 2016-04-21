@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Color
-vid: color
-description: 'Shirt colors'
-hierarchy: 0
-weight: 0
