@@ -4,6 +4,10 @@ description: Commerce demo stuff
 core: 8.x
 package: Custom
 dependencies:
-  - taxonomy
   - commerce_store
   - commerce_product
+  - migrate
+  - migrate_plus
+  - migrate_tools
+  - migrate_source_csv
+  - commerce_migrate

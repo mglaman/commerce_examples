@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies: {  }
+id: commerce_demo_product_attribute_color
+migration_tags: commerce_demo
+migration_group: commerce_demo
+label: 'Color product attribute values.'
+source:
+  plugin: commerce_demo_csv_attribute_values
+  keys:
+    - ColorName
+process:
+  name: ColorName
+  attribute:
+    plugin: default_value
+    default_value: color
+destination:
+  plugin: 'entity:commerce_product_attribute_value'
+migration_dependencies: {  }

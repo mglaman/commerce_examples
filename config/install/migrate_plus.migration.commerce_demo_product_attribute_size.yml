@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies: {  }
+id: commerce_demo_product_attribute_size
+migration_tags: commerce_demo
+migration_group: commerce_demo
+label: 'Product size attribute values.'
+source:
+  plugin: commerce_demo_csv_attribute_values
+  keys:
+    - Size
+process:
+  name: Size
+  attribute:
+    plugin: default_value
+    default_value: size
+destination:
+  plugin: 'entity:commerce_product_attribute_value'
+migration_dependencies: {  }

@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies: {  }
+id: commerce_demo_product_import
+migration_tags: commerce_demo
+migration_group: commerce_demo
+label: 'Commerce Demo Product import'
+source:
+  plugin: commerce_demo_product_csv
+  keys:
+    - Name
+process:
+  title: Name
+  type:
+    plugin: default_value
+    default_value: t_shirt
+  stores:
+    plugin: default_value
+    default_value:
+      - 1
+  variations/target_id:
+    -
+      plugin: migration
+      migration: commerce_demo_product_variation_import
+      source: product_variations
+    -
+      plugin: skip_on_empty
+      method: row
+destination:
+  plugin: 'entity:commerce_product'
+migration_dependencies:
+  required:
+    - commerce_demo_product_variation_import
