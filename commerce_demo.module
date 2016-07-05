@@ -52,3 +52,22 @@ function commerce_demo_core_rebuild() {
     }
   }
 }
+
+/**
+ * Implements hook_config_schema_info_alter().
+ */
+function commerce_demo_config_schema_info_alter(&$definitions) {
+  if (isset($definitions['migrate_plus.source.*'])) {
+    $definitions['migrate_plus.source.*']['mapping'] = [
+      'keys' => [
+        'type' => 'sequence',
+        'label' => 'Extra keys',
+        'sequence' => [
+          'type' => 'string',
+          'label' => 'Key',
+        ],
+      ],
+    ];
+  }
+}
+
