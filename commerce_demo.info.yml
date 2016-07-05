@@ -4,6 +4,8 @@ description: Commerce demo stuff
 core: 8.x
 package: Custom
 dependencies:
+  - file
+  - image
   - commerce_store
   - commerce_product
   - migrate
