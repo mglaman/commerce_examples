@@ -15,6 +15,9 @@ use Drupal\migrate\Row;
  */
 class Product extends CSV {
 
+  /**
+   * {@inheritdoc}
+   */
   public function initializeIterator() {
     // File handler using header-rows-respecting extension of SPLFileObject.
     $file = new DemoCsv($this->configuration['path']);
@@ -49,6 +52,9 @@ class Product extends CSV {
     return $file;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function prepareRow(Row $row) {
     $targets = [];
     /* @var Row $row */
@@ -71,4 +77,5 @@ class Product extends CSV {
     $row->rehash();
     return TRUE;
   }
+
 }
