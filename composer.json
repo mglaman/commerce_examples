@@ -10,5 +10,10 @@
     "issues": "http://drupal.org/project/issues/commerce_demo",
     "source": "http://cgit.drupalcode.org/commerce_demo"
   },
-  "require": { }
+  "require": {
+      "drupal/commerce": "8.2.x-dev",
+      "drupal/migrate_plus": "8.2.x-dev",
+      "drupal/migrate_source_csv": "8.2.x-dev",
+      "drupal/migrate_tools": "8.2.x-dev"
+  }
 }
