@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\commerce_demo\Kernel;
 
+use Drupal\commerce_product\Entity\Product;
 use Drupal\commerce_product\Entity\ProductAttribute;
 use Drupal\Tests\migrate\Kernel\MigrateTestBase;
 
@@ -65,12 +66,37 @@ class RunMigrationTest extends MigrateTestBase {
    */
   public function testAttributesImported() {
     $color = ProductAttribute::load('color');
+    /** @var \Drupal\commerce_product\Entity\ProductAttributeValueInterface[] $color_values */
     $color_values = $color->getValues();
     $this->assertNotEmpty($color_values);
+    $this->assertEquals(4, count($color_values));
 
     $size = ProductAttribute::load('size');
     $size_values = $size->getValues();
     $this->assertNotEmpty($size_values);
+    $this->assertEquals(3, count($size_values));
+  }
+
+  /**
+   * Tests that the products got imported.
+   */
+  public function testProductsImported() {
+    $products = Product::loadMultiple();
+    $this->assertNotEmpty($products);
+    $this->assertEquals(2, count($products));
+
+    /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+    foreach ($products as $product) {
+      switch ($product->label()) {
+        case 'Commerce Guys Hoodie':
+          $this->assertEquals(12, count($product->getVariations()));
+          break;
+
+        case 'Drupal Commerce Cart Shirt':
+          $this->assertEquals(12, count($product->getVariations()));
+          break;
+      }
+    }
   }
 
 }
