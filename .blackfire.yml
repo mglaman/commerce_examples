@@ -1,0 +1,5 @@
+tests:
+    "Pages should be fast enough":
+        path: "/. *" # run the assertions for all HTTP requests
+        assertions:
+            - "main.wall_time < 1s" # wall clock time is less than 100ms
