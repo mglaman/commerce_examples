@@ -4,21 +4,28 @@ namespace Drupal\commerce_demo;
 
 use Drupal\migrate_source_csv\CSVFileObject;
 
+/**
+ * Custom CSV file object implementation.
+ */
 class DemoCsv extends CSVFileObject {
 
   /**
    * Keep track of which styles we have done.
+   *
    * @var array
    */
   public $importedProduct = [];
 
   /**
    * The current style we're looking at.
+   *
    * @var string
    */
   public $name = '';
 
   /**
+   * Custom implementation to make unique rows.
+   *
    * Since the CSV file has multiple rows for each product, we only want a
    * single "representative" line to be used. So we override the iterator
    * in such a way as to skip all of the duplicates and only grab a single
@@ -38,7 +45,6 @@ class DemoCsv extends CSVFileObject {
     $this->importedProduct[] = $row['Name'];
   }
 
-
   /**
    * Returns the count of the number of items.
    *
@@ -46,6 +52,7 @@ class DemoCsv extends CSVFileObject {
    * we're overriding this so that the counts match up.
    *
    * @return mixed
+   *   The count.
    */
   public function count() {
     $this->next();
@@ -62,6 +69,5 @@ class DemoCsv extends CSVFileObject {
 
     return count($items);
   }
+
 }
-
-

@@ -2,7 +2,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: commerce_demo_product_variation_import
-migration_tags: commerce_demo
+migration_tags:
+  - commerce_demo
 migration_group: commerce_demo
 label: 'Commerce Demo Product Variation Import'
 source:
@@ -34,6 +35,6 @@ process:
 destination:
   plugin: 'entity:commerce_product_variation'
 migration_dependencies:
-  require:
+  required:
     - commerce_demo_product_attribute_color
     - commerce_demo_product_attribute_size

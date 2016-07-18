@@ -12,26 +12,32 @@ use Drupal\migrate_source_csv\Plugin\migrate\source\CSV;
  * )
  */
 class ProductAttribute extends CSV {
-    public function initializeIterator() {
-        $colors = [];
-        $fileIterator = parent::initializeIterator();
 
-        $fileIterator->next();
-        while ($fileIterator->valid()) {
-            $row_data = $fileIterator->current() + $this->configuration;
-            $fileIterator->next();
+  /**
+   * {@inheritdoc}
+   */
+  public function initializeIterator() {
+    $all_items = [];
+    $colors = [];
+    $fileIterator = parent::initializeIterator();
 
-            $colors[] = $row_data[$this->configuration['keys'][0]];
-        }
-        $items = array_unique($colors);
-        $items = array_filter($items);
+    $fileIterator->next();
+    while ($fileIterator->valid()) {
+      $row_data = $fileIterator->current() + $this->configuration;
+      $fileIterator->next();
 
-        foreach ($items as $item) {
-            $all_items[] = [
-                $this->configuration['keys'][0] => $item,
-            ];
-        }
-
-        return new \ArrayIterator($all_items);
+      $colors[] = $row_data[$this->configuration['keys'][0]];
     }
+    $items = array_unique($colors);
+    $items = array_filter($items);
+
+    foreach ($items as $item) {
+      $all_items[] = [
+        $this->configuration['keys'][0] => $item,
+      ];
+    }
+
+    return new \ArrayIterator($all_items);
+  }
+
 }

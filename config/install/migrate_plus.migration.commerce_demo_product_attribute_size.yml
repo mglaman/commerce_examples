@@ -2,7 +2,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: commerce_demo_product_attribute_size
-migration_tags: commerce_demo
+migration_tags:
+  - commerce_demo
 migration_group: commerce_demo
 label: 'Product size attribute values.'
 source:
