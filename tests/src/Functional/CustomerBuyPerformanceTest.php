@@ -2,6 +2,8 @@
 
 namespace Drupal\Tests\commerce_demo\Functional;
 
+use Blackfire\Client as BlackfireClient;
+use Blackfire\Bridge\Guzzle\Middleware;
 use Blackfire\Bridge\PhpUnit\TestCaseTrait as BlackfireTrait;
 use Blackfire\Profile\Configuration;
 use Drupal\commerce_product\Entity\Product;
@@ -10,14 +12,30 @@ use Drupal\migrate\MigrateMessageInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\Tests\commerce\Functional\CommerceBrowserTestBase;
 use Drupal\Tests\migrate\Kernel\MigrateDumpAlterInterface;
+use GuzzleHttp\HandlerStack;
 
 /**
  * Tests customer buying experience performance.
  *
  * @group commerce_demo
+ * @group blackfire
  */
 class CustomerBuyPerformanceTest extends CommerceBrowserTestBase implements MigrateMessageInterface {
   use BlackfireTrait;
+
+  /**
+   * The Blackfire client.
+   *
+   * @var \Blackfire\Client
+   */
+  protected $blackfireClient;
+
+  /**
+   * The Guzzle client.
+   *
+   * @var \GuzzleHttp\Client
+   */
+  protected $guzzleClient;
 
   /**
    * The source database connection.
@@ -54,6 +72,15 @@ class CustomerBuyPerformanceTest extends CommerceBrowserTestBase implements Migr
   protected function setUp() {
     parent::setUp();
 
+    $this->blackfireClient = new BlackfireClient();
+
+    $stack = HandlerStack::create();
+    $stack->push(Middleware::create($this->blackfireClient), 'blackfire');
+    $this->guzzleClient = \Drupal::service('http_client_factory')->fromOptions([
+      'cookies' => TRUE,
+      'handler' => $stack,
+    ]);
+
     /** @var \Drupal\migrate_plus\Plugin\MigrationConfigEntityPluginManager $manager */
     $manager = \Drupal::service('plugin.manager.config_entity_migration');
     $plugins = $manager->createInstances([]);
@@ -75,35 +102,34 @@ class CustomerBuyPerformanceTest extends CommerceBrowserTestBase implements Migr
 
   /**
    * Tests loading the product page.
-   *
-   * @group blackfire
    */
   public function testProductPageLoadPerformance() {
     $product = Product::load(1);
     $this->assertNotNull($product);
     $config = new Configuration();
-    $config->setTitle('Commerce Demo: Product page load performance');
-    $config->assert('main.wall_time < 0.5s', 'Wall time');
-    $this->assertBlackfire($config, function () {
-      $this->drupalGet('product/1');
-    });
+    $config->setTitle('Product page load');
+
+    $response = $this->guzzleClient->request('GET', $product->toUrl('canonical', ['absolute' => TRUE])->toString(), [
+      'blackfire' => $config,
+    ]);
+
+    $profile = $this->blackfireClient->getProfile($response->getHeader('X-Blackfire-Profile-Uuid')[0]);
+    $this->assertTrue($profile->isSuccessful(), 'Profile URL: ' . $profile->getUrl());
   }
 
   /**
    * Tests add to cart performance.
-   *
-   * @group blackfire
    */
   public function testAddToCartPerformance() {
     $product = Product::load(1);
-    $this->assertNotNull($product);
-    $config = new Configuration();
-    $config->setTitle('Commerce Demo: Add to cart performance');
-    $config->assert('main.wall_time < 0.5s', 'Wall time');
-    $this->drupalGet('product/1');
-    $this->assertBlackfire($config, function () {
-      $this->submitForm([], 'Add to cart');
-    });
+    $this->drupalGet($product->toUrl());
+
+    $profile_request = $this->blackfireClient->createRequest();
+    $this->mink->getSession()->setRequestHeader('X-Blackfire-Query', $profile_request->getToken());
+    $this->submitForm([], 'Add to cart');
+
+    $profile = $this->blackfireClient->getProfile($profile_request->getUuid());
+    $this->assertTrue($profile->isSuccessful(), 'Profile URL: ' . $profile->getUrl());
   }
 
   /**
