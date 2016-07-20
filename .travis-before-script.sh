@@ -38,6 +38,10 @@ drush en -y commerce commerce_product commerce_order commerce_checkout
 phantomjs --ssl-protocol=any --ignore-ssl-errors=true $DRUPAL_TI_DRUPAL_DIR/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768 2>&1 >> /dev/null &
 
 if [[ "$BLACKFIRE" = "on" ]]; then
+  openssl aes-256-cbc -K $encrypted_f20332cf8ed0_key -iv $encrypted_f20332cf8ed0_iv -in .blackfire.travis.ini.enc -out ~/.blackfire.ini -d
+  curl -L https://blackfire.io/api/v1/releases/agent/linux/amd64 | tar zxpf -
+  chmod 755 agent && ./agent --config=~/.blackfire.ini --socket=unix:///tmp/blackfire.sock &
+
   curl -L https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$(php -r "echo PHP_MAJOR_VERSION . PHP_MINOR_VERSION;")-zts | tar zxpf -
   echo "extension=$(pwd)/$(ls blackfire-*.so | tr -d '[[:space:]]')" > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/blackfire.ini
   echo "blackfire.agent_socket=unix:///tmp/blackfire.sock" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/blackfire.ini
