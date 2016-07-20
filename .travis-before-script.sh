@@ -37,5 +37,10 @@ drush en -y commerce commerce_product commerce_order commerce_checkout
 # Turn on PhantomJS for functional Javascript tests
 phantomjs --ssl-protocol=any --ignore-ssl-errors=true $DRUPAL_TI_DRUPAL_DIR/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768 2>&1 >> /dev/null &
 
-# Link the module's .blackfire.yml to the docroot so it's tests will catch.
-ln -sf "$TRAVIS_BUILD_DIR/.blackfire.yml" "$DRUPAL_TI_DRUPAL_DIR/.blackfire.yml"
+if [[ "$BLACKFIRE" = "on" ]]; then
+  curl -L https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$(php -r "echo PHP_MAJOR_VERSION . PHP_MINOR_VERSION;")-zts | tar zxpf -
+  echo "extension=$(pwd)/$(ls blackfire-*.so | tr -d '[[:space:]]')" > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/blackfire.ini
+  echo "blackfire.agent_socket=unix:///tmp/blackfire.sock" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/blackfire.ini
+  # Link the module's .blackfire.yml to the docroot so it's tests will catch.
+  ln -sf "$TRAVIS_BUILD_DIR/.blackfire.yml" "$DRUPAL_TI_DRUPAL_DIR/.blackfire.yml"
+fi
