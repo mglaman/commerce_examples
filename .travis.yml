@@ -113,6 +113,7 @@ before_install:
         curl -L https://blackfire.io/api/v1/releases/agent/linux/amd64 | tar zxpf -
         chmod 755 agent && ./agent --config=~/.blackfire.ini --socket=unix:///tmp/blackfire.sock &
       fi
+
   - drupal-ti before_install
 
 install:
