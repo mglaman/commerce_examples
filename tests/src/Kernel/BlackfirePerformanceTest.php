@@ -74,25 +74,25 @@ class BlackfirePerformanceTest extends MigrateTestBase {
   /**
    * Tests product load.
    */
-  public function testProductViewPerformance() {
+  public function testProductViewPerformanceUncached() {
+    // Build routes before we run tests.
+    \Drupal::service('router.builder')->rebuild();
+
     $product = Product::load(1);
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder('commerce_product');
 
     $config = new Configuration();
-    $config->defineMetric(new Metric('drupal.entity_field_manager.get_field_definitions', [
-      '=Drupal\Core\Entity\EntityFieldManagerInterface::getFieldDefinitions',
-    ]));
-    $config->defineMetric(new Metric('drupal.cache.invalidate', [
-      '=Drupal\Core\Cache\Cache::invalidateTags',
-    ]));
-    $config->assert('main.wall_time < 0.25s', 'Wall time');
-    $config->assert('metrics.drupal.entity_field_manager.get_field_definitions.count < 1');
-    $config->assert('drupal.cache.invalidate = 0');
+    $config->setTitle('Kernel: Product render uncached');
+    $config->defineMetric(new Metric('drupal.entity_field_manager.get_field_definitions', '=Drupal\Core\Entity\EntityFieldManager::getFieldDefinitions'));
+    $config->assert('main.wall_time <= 1.5s', 'Wall time');
+    $config->assert('metrics.drupal.entity_field_manager.get_field_definitions.count == 0');
 
-    $this->assertBlackfire($config, function () use ($product, $view_builder) {
+    $profile = $this->assertBlackfire($config, function () use ($product, $view_builder) {
       $build = $view_builder->view($product);
       $this->render($build);
     });
+
+    $this->assertTrue($profile->isSuccessful(), 'Profile URL:' . $profile->getUrl());
   }
 
 }

@@ -128,8 +128,15 @@ before_script:
   - drupal-ti before_script
 
 script:
+  - |
+      if [[ "$BLACKFIRE" = "on" ]]; then
+        curl -L https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$(php -r "echo PHP_MAJOR_VERSION . PHP_MINOR_VERSION;")-zts | tar zxpf -
+        echo "extension=$(pwd)/$(ls blackfire-*.so | tr -d '[[:space:]]')" > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/blackfire.ini
+        echo "blackfire.agent_socket=unix:///tmp/blackfire.sock" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/blackfire.ini
+      fi
   - phpcs --standard=Drupal .
   - drupal-ti --include ".travis-script.sh"
+  # If Blackfire is on, do not exclude its test group.
   - if [[ "$BLACKFIRE" = "on" ]]; then DRUPAL_TI_PHPUNIT_ARGS=""; fi
   - drupal-ti script
 

@@ -11,6 +11,6 @@ metrics:
         matching_calls:
             php:
                   - callee:
-                        selector: 'Drupal\Core\Cache\Cache::invalidateTags'
+                        selector: '=Drupal\Core\Cache\Cache::invalidateTags'
                         # Each call has different cache tags, separate by them
                         argument: { 1: "^" }
