@@ -1,0 +1,7 @@
+langcode: en
+status: true
+label: Business to Business
+id: b2b
+workflow: order_default
+refresh_mode: always
+refresh_frequency: 30

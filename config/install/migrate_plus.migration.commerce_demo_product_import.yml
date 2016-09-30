@@ -27,6 +27,7 @@ process:
     -
       plugin: skip_on_empty
       method: row
+  body: description
 destination:
   plugin: 'entity:commerce_product'
 migration_dependencies:

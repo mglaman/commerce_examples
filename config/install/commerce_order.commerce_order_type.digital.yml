@@ -1,0 +1,7 @@
+langcode: en
+status: true
+label: Digital
+id: digital
+workflow: order_default
+refresh_mode: always
+refresh_frequency: 30
