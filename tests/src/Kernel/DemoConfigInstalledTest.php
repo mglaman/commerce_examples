@@ -9,6 +9,8 @@ use Drupal\KernelTests\KernelTestBase;
 
 /**
  * Tests that config installed.
+ *
+ * @group commerce_demo
  */
 class DemoConfigInstalledTest extends KernelTestBase {
   public static $modules = [

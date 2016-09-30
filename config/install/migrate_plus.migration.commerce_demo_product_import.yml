@@ -12,9 +12,7 @@ source:
     - Name
 process:
   title: Name
-  type:
-    plugin: default_value
-    default_value: t_shirt
+  type: Type
   stores:
     plugin: default_value
     default_value:

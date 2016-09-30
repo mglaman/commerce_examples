@@ -15,10 +15,8 @@ process:
     plugin: default_value
     default_value: null
   sku: SKU
-  type:
-    plugin: default_value
-    default_value: t_shirt
-  price/amount: Price
+  type: Type
+  price/number: Price
   price/currency_code:
     plugin: default_value
     default_value: USD

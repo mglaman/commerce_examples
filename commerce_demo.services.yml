@@ -1,0 +1,12 @@
+services:
+  # Resolves order type based on the product type.
+  commerce_demo.product_type_order_type_resolver:
+    class: Drupal\commerce_demo\Resolvers\ProductTypeOrderTypeResolver
+    tags:
+      - { name: commerce_order.order_type_resolver, priority: 100 }
+  # Resolves order type based on roles. This has a priority of 200 so that it runs before product type and default.
+  commerce_demo.roles_order_type_resolver:
+    class: Drupal\commerce_demo\Resolvers\RolesOrderTypeResolver
+    arguments: ['@current_user']
+    tags:
+      - { name: commerce_order.order_type_resolver, priority: 200 }

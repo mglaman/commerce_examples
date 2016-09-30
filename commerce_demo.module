@@ -1,43 +1,48 @@
 <?php
+
+use Drupal\Component\Utility\Crypt;
+use Drupal\Core\Config\Config;
+use Drupal\Core\Config\Entity\ConfigDependencyManager;
+use Drupal\Core\Config\FileStorage;
+use Drupal\Core\Config\InstallStorage;
+use Drupal\Core\Config\StorageInterface;
+
 /**
  * Implements hook_rebuild().
  */
 function commerce_demo_core_rebuild() {
-  $collection = \Drupal\Core\Config\StorageInterface::DEFAULT_COLLECTION;
+  $collection = StorageInterface::DEFAULT_COLLECTION;
   $config_manager = \Drupal::service('config.manager');
   $modules = ['commerce_demo'];
   foreach ($modules as $module) {
 
-    $default_install_path = drupal_get_path('module', $module) . '/' . \Drupal\Core\Config\InstallStorage::CONFIG_INSTALL_DIRECTORY;
-    $storage = new \Drupal\Core\Config\FileStorage($default_install_path, $collection);
+    $default_install_path = drupal_get_path('module', $module) . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
+    $storage = new FileStorage($default_install_path, $collection);
     $prefix = '';
     $data = $storage->readMultiple($storage->listAll($prefix));
     if (!empty($data)) {
-      $dependency_manager = new \Drupal\Core\Config\Entity\ConfigDependencyManager();
+      $dependency_manager = new ConfigDependencyManager();
       $config_names = $dependency_manager
         ->setData($data)
         ->sortAll();
-      $overrider = $config_manager->getConfigCollectionInfo()->getOverrideService($collection);
+      $overrider = $config_manager->getConfigCollectionInfo()
+        ->getOverrideService($collection);
       foreach ($config_names as $name) {
-        if ($overrider) {
-          $new_config = $overrider->createConfigObject($name, $collection);
-        }
-        else {
-          $new_config = new Drupal\Core\Config\Config(
-            $name,
-            $storage,
-            \Drupal::service('event_dispatcher'),
-            \Drupal::service('config.typed'));
-        }
+        $new_config = $overrider ? $overrider->createConfigObject($name, $collection) : new Config(
+          $name,
+          $storage,
+          \Drupal::service('event_dispatcher'),
+          \Drupal::service('config.typed'));
         if ($data[$name] !== FALSE) {
           $new_config->setData($data[$name]);
-          $new_config->set('_core.default_config_hash', \Drupal\Component\Utility\Crypt::hashBase64(serialize($data[$name])));
+          $new_config->set('_core.default_config_hash', Crypt::hashBase64(serialize($data[$name])));
         }
         if ($entity_type = $config_manager->getEntityTypeIdByName($name)) {
           $entity_storage = \Drupal::entityTypeManager()
-                                   ->getStorage($entity_type);
+            ->getStorage($entity_type);
           if ($storage->exists($name)) {
-            $id = $entity_storage->getIDFromConfigName($name, $entity_storage->getEntityType()->getConfigPrefix());
+            $id = $entity_storage->getIDFromConfigName($name, $entity_storage->getEntityType()
+              ->getConfigPrefix());
             $entity = $entity_storage->load($id);
             $entity = $entity_storage->updateFromStorageRecord($entity, $new_config->get());
           }

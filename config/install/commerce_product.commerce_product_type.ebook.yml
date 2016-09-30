@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: dvds
-label: DVDs
+id: ebook
+label: eBook
 description: ''
-variationType: default
+variationType: ebook
