@@ -8,5 +8,5 @@ source_type: 'CSV Files'
 module: null
 shared_configuration:
   source:
-    path: ./modules/commerce_demo/data/demo_data.csv
+    path: ./modules/contrib/commerce_demo/data/demo_data.csv
     header_row_count: 1

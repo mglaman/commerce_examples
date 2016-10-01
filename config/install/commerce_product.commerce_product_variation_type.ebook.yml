@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: t_shirt
-label: T-Shirt
+id: ebook
+label: eBook
 orderItemType: product_variation
 generateTitle: true
