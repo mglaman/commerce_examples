@@ -76,3 +76,14 @@ function commerce_demo_config_schema_info_alter(&$definitions) {
   }
 }
 
+/**
+ * Implements hook_theme().
+ */
+function commerce_demo_theme($existing, $type, $theme, $path) {
+  return [
+    'commerce_product__full' => [
+      'render element' => 'elements',
+      'base hook' => 'commerce_product',
+    ],
+  ];
+}
