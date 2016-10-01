@@ -9,53 +9,38 @@ use Drupal\Core\Config\StorageInterface;
 
 /**
  * Implements hook_rebuild().
+ *
+ * This will gather all of the configuration that the demo module provides
+ * and import or revert it on cache rebuild.
+ *
+ * This serves as an example in using the `config_updater` service to easily
+ * import or revert default configuration.
  */
-function commerce_demo_core_rebuild() {
-  $collection = StorageInterface::DEFAULT_COLLECTION;
-  $config_manager = \Drupal::service('config.manager');
-  $modules = ['commerce_demo'];
-  foreach ($modules as $module) {
+function commerce_demo_rebuild() {
+  /** @var \Drupal\commerce\Config\ConfigUpdaterInterface $updater */
+  $updater = \Drupal::service('commerce.config_updater');
+  $default_install_path = drupal_get_path('module', 'commerce_demo') . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
+  $storage = new FileStorage($default_install_path, StorageInterface::DEFAULT_COLLECTION);
+  $data = $storage->readMultiple($storage->listAll(''));
+  $dependency_manager = new ConfigDependencyManager();
+  $config_names = $dependency_manager->setData($data)->sortAll();
 
-    $default_install_path = drupal_get_path('module', $module) . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
-    $storage = new FileStorage($default_install_path, $collection);
-    $prefix = '';
-    $data = $storage->readMultiple($storage->listAll($prefix));
-    if (!empty($data)) {
-      $dependency_manager = new ConfigDependencyManager();
-      $config_names = $dependency_manager
-        ->setData($data)
-        ->sortAll();
-      $overrider = $config_manager->getConfigCollectionInfo()
-        ->getOverrideService($collection);
-      foreach ($config_names as $name) {
-        $new_config = $overrider ? $overrider->createConfigObject($name, $collection) : new Config(
-          $name,
-          $storage,
-          \Drupal::service('event_dispatcher'),
-          \Drupal::service('config.typed'));
-        if ($data[$name] !== FALSE) {
-          $new_config->setData($data[$name]);
-          $new_config->set('_core.default_config_hash', Crypt::hashBase64(serialize($data[$name])));
-        }
-        if ($entity_type = $config_manager->getEntityTypeIdByName($name)) {
-          $entity_storage = \Drupal::entityTypeManager()
-            ->getStorage($entity_type);
-          if ($storage->exists($name)) {
-            $id = $entity_storage->getIDFromConfigName($name, $entity_storage->getEntityType()
-              ->getConfigPrefix());
-            $entity = $entity_storage->load($id);
-            $entity = $entity_storage->updateFromStorageRecord($entity, $new_config->get());
-          }
-          else {
-            $entity = $entity_storage->createFromStorageRecord($new_config->get());
-          }
-          if ($entity->isInstallable()) {
-            $entity->trustData()->save();
-          }
-        }
-      }
+  $import = [];
+  $revert = [];
+  foreach ($config_names as $name) {
+    // For some reason this causes errors, skip this config.
+    if ($name == 'migrate_plus.migration_group.commerce_demo') {
+      continue;
+    }
+    if ($updater->loadFromActive($name)) {
+      $revert[] = $name;
+    }
+    else {
+      $import[] = $name;
     }
   }
+  $updater->import($import);
+  $updater->revert($revert, FALSE);
 }
 
 /**
