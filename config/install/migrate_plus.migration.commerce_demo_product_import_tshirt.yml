@@ -1,10 +1,10 @@
 langcode: en
 status: true
 dependencies: {  }
-id: commerce_demo_product_import
+id: commerce_demo_product_import_tshirt
 migration_tags:
   - commerce_demo
-migration_group: commerce_demo
+migration_group: commerce_demo_tshirt
 label: 'Commerce Demo Product import'
 source:
   plugin: commerce_demo_product_csv
@@ -12,7 +12,9 @@ source:
     - Name
 process:
   title: Name
-  type: Type
+  type:
+    plugin: default_value
+    default_value: t_shirt
   stores:
     plugin: default_value
     default_value:
@@ -30,4 +32,4 @@ destination:
   plugin: 'entity:commerce_product'
 migration_dependencies:
   required:
-    - commerce_demo_product_variation_import
+    - commerce_demo_product_variation_import_tshirt

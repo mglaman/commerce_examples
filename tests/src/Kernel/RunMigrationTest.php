@@ -53,7 +53,7 @@ class RunMigrationTest extends MigrateTestBase {
       if (empty($configured_group_id)) {
         continue;
       }
-      if ($configured_group_id == 'commerce_demo') {
+      if ($configured_group_id == 'commerce_demo_tshirt') {
         $migrations[] = $migration->id();
       }
     }

@@ -4,7 +4,7 @@ dependencies: {  }
 id: commerce_demo_product_attribute_color
 migration_tags:
   - commerce_demo
-migration_group: commerce_demo
+migration_group: commerce_demo_tshirt
 label: 'Color product attribute values.'
 source:
   plugin: commerce_demo_csv_attribute_values

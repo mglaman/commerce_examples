@@ -29,7 +29,7 @@ function commerce_demo_rebuild() {
   $revert = [];
   foreach ($config_names as $name) {
     // For some reason this causes errors, skip this config.
-    if ($name == 'migrate_plus.migration_group.commerce_demo') {
+    if (strpos($name, 'migrate_plus.migration_group') !== FALSE) {
       continue;
     }
     if ($updater->loadFromActive($name)) {

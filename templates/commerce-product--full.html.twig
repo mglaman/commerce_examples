@@ -21,11 +21,12 @@
 #}
 <article{{ attributes }}>
   <div style="width: 60%; float: left;">
-    {{- product|without('variation_attributes', 'variations', 'variation_title', 'variation_sku') -}}
+    {{- product|without('variation_attributes', 'variations', 'variation_title', 'variation_sku', 'variation_price') -}}
   </div>
   <div style="width: 40%; float: right;">
     {{ product.variation_title }}
     {{ product.variation_sku }}
+    {{ product.variation_price }}
     {{ product.variations }}
   </div>
 </article>
