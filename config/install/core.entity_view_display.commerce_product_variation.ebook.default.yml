@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.ebook
+  module:
+    - commerce_price
+id: commerce_product_variation.ebook.default
+targetEntityType: commerce_product_variation
+bundle: ebook
+mode: default
+content:
+  price:
+    label: inline
+    type: commerce_price_calculated
+    weight: 0
+    settings:
+      strip_trailing_zeroes: false
+      display_currency_code: false
+    third_party_settings: {  }
+  sku:
+    label: hidden
+    type: string
+    weight: -4
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  product_id: true

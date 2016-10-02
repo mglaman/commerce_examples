@@ -10,3 +10,9 @@ services:
     arguments: ['@current_user']
     tags:
       - { name: commerce_order.order_type_resolver, priority: 200 }
+  # Resolves prices for products based on a query parameter.
+  commerce_demo.url_query_price_resolver:
+    class: Drupal\commerce_demo\Resolvers\UrlQueryPriceResolver
+    arguments: ['@request_stack']
+    tags:
+      - { name: commerce_price.price_resolver, priority: 600 }
