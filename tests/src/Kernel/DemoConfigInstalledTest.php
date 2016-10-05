@@ -14,10 +14,10 @@ use Drupal\KernelTests\KernelTestBase;
  */
 class DemoConfigInstalledTest extends KernelTestBase {
   public static $modules = [
-    'system', 'field', 'options', 'user', 'path', 'text', 'user', 'views',
-    'file', 'image',
-    'migrate', 'migrate_plus', 'migrate_tools', 'migrate_source_csv',
+    'system', 'field', 'options', 'user', 'path', 'text', 'views', 'file',
+    'image', 'migrate', 'migrate_plus', 'migrate_tools', 'migrate_source_csv',
     'profile', 'address', 'state_machine', 'inline_entity_form', 'entity',
+    'entity_reference_revisions',
     'commerce',
     'commerce_price',
     'commerce_store',
