@@ -4,12 +4,10 @@ dependencies: {  }
 id: commerce_demo_product_variation_import_ebook
 migration_tags:
   - commerce_demo
-migration_group: commerce_demo
+migration_group: commerce_demo_ebook
 label: 'Commerce Demo Product Variation Import'
 source:
   plugin: csv
-  path: ./modules/contrib/commerce_demo/data/demo_ebooks.csv
-  header_row_count: 1
   keys:
     - SKU
 process:

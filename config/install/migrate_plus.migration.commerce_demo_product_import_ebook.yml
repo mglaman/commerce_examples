@@ -8,8 +8,6 @@ migration_group: commerce_demo_ebook
 label: 'Commerce Demo Product import'
 source:
   plugin: commerce_demo_product_csv
-  path: ./modules/contrib/commerce_demo/data/demo_ebooks.csv
-  header_row_count: 1
   keys:
     - Name
 process:

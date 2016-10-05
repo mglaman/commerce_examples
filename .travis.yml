@@ -8,9 +8,9 @@ language: php
 sudo: false
 
 php:
-  - 5.5
-  - 5.6
   - 7
+  - 5.6
+  - 5.5
 
 branches:
   except:
@@ -18,8 +18,6 @@ branches:
 
 matrix:
   fast_finish: true
-  allow_failures:
-    - php: 7
 
 env:
   global:
@@ -83,6 +81,7 @@ env:
     # Set to "all" to output all files, set to e.g. "xvfb selenium" or "selenium",
     # etc. to only output those channels.
     #- DRUPAL_TI_DEBUG_FILE_OUTPUT="selenium xvfb webserver"
+    - DRUPAL_TI_MODULES_PATH="modules/contrib"
 
   matrix:
     # [[[ SELECT ANY OR MORE OPTIONS ]]]
@@ -98,7 +97,7 @@ mysql:
 
 before_install:
   # Remove xdebug. We aren't generating code coverage, and it slows down Composer.
-#  - phpenv config-rm xdebug.ini || true
+  - phpenv config-rm xdebug.ini || true
   - composer self-update
   - composer global require "hirak/prestissimo:^0.3"
   - composer global require "lionsad/drupal_ti:dev-master"
