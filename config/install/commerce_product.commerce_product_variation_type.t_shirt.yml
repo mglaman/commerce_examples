@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: t_shirt
 label: T-Shirt
-orderItemType: product_variation
+orderItemType: default
 generateTitle: true
