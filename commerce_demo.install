@@ -17,4 +17,5 @@ function commerce_demo_install() {
   ];
   $store = $store_storage->create($store_values);
   $store->save();
+  $store_storage->markAsDefault($store);
 }
