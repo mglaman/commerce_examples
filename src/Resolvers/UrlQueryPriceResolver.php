@@ -2,6 +2,7 @@
 
 namespace Drupal\commerce_demo\Resolvers;
 
+use Drupal\commerce\Context;
 use Drupal\commerce\PurchasableEntityInterface;
 use Drupal\commerce_price\Resolver\PriceResolverInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -34,7 +35,7 @@ class UrlQueryPriceResolver implements PriceResolverInterface {
   /**
    * {@inheritdoc}
    */
-  public function resolve(PurchasableEntityInterface $entity, $quantity = 1) {
+  public function resolve(PurchasableEntityInterface $entity, $quantity, Context $context) {
     // We check if the request has a discount parameter. We will only return a
     // price if it does. By not returning a price, we allow other resolvers to
     // have a chance at returning the price value.
