@@ -6,7 +6,7 @@ function commerce_demo_install() {
 
   $currency_importer->import('USD');
   $store_values = [
-    'type' => 'default',
+    'type' => 'online',
     'uid' => 1,
     'name' => 'Demo store',
     'mail' => 'admin@example.com',
