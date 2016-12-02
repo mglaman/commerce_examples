@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_payment_example
+id: example_on_site
+label: 'Example On-site'
+weight: null
+plugin: example_onsite
+configuration:
+  api_key: fsdfdsfsdsdf
+  mode: test
+  payment_method_types:
+    - credit_card
