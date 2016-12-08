@@ -21,4 +21,4 @@ services:
   commerce_demo.order_process.taxes:
     class: Drupal\commerce_demo\OrderProcessor\ApplyTaxAdjustments
     tags:
-      - { name: commerce_order.order_refresh_processor, priority: -300 }
+      - { name: commerce_order.order_processor, priority: -300 }
