@@ -6,19 +6,15 @@ migration.
 
 ## Installation
 
-Ensure your Drupal installation has the following information in the `repositories`
-section. This will allow Composer to discover this module (since it's not on Drupal.org)
-
+Add this private repository to the composer configuration repositories list:
 ```
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/mglaman/commerce_demo"
-        }
-    ],
+composer config repositories.mglaman vcs https://github.com/mglaman/commerce_demo
 ```
 
-Then, in your Drupal directory run `composer require drupal/commerce_demo:dev-master`.
+Then, install this module:
+```
+composer require drupal/commerce_demo:dev-master
+```
 
 ## Features
 
