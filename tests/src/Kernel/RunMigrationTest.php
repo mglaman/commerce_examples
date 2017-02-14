@@ -23,6 +23,7 @@ class RunMigrationTest extends MigrateTestBase {
     'commerce_store',
     'commerce_order',
     'commerce_product',
+    'commerce_payment',
     'commerce_migrate',
     'commerce_demo',
   ];
