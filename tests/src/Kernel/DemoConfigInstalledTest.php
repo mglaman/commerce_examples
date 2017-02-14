@@ -23,6 +23,8 @@ class DemoConfigInstalledTest extends KernelTestBase {
     'commerce_store',
     'commerce_order',
     'commerce_product',
+    'commerce_payment',
+    'commerce_payment_example',
     'commerce_demo',
   ];
 
