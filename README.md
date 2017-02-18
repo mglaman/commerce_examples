@@ -16,6 +16,14 @@ Then, install this module:
 composer require drupal/commerce_demo:dev-master
 ```
 
+You will need run the migrations using Drush
+
+```
+cd /path/to/drupal
+drush cc drush
+drush mi --all
+```
+
 ## Features
 
 * Sample product type
