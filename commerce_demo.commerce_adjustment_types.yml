@@ -1,0 +1,4 @@
+tax:
+  label: VAT
+  has_ui: true
+  weight: 100
