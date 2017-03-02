@@ -5,3 +5,5 @@ id: t_shirt
 label: T-Shirt
 orderItemType: default
 generateTitle: true
+traits:
+  - purchasable_entity_shippable
