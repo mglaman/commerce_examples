@@ -14,3 +14,4 @@ dependencies:
   - migrate_tools
   - migrate_source_csv
   - commerce_migrate
+  - commerce_shipping

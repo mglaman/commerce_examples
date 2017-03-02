@@ -18,4 +18,10 @@ function commerce_demo_install() {
   $store = $store_storage->create($store_values);
   $store->save();
   $store_storage->markAsDefault($store);
+
+  // Enable shipping on the default order type.
+  $default_order_type = \Drupal\commerce_order\Entity\OrderType::load('default');
+  $default_order_type->setThirdPartySetting('commerce_shipping', 'shipment_type', 'default');
+  $default_order_type->setThirdPartySetting('commerce_checkout', 'checkout_flow', 'shipping');
+  $default_order_type->save();
 }
