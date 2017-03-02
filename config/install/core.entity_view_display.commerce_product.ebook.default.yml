@@ -15,9 +15,9 @@ bundle: ebook
 mode: default
 content:
   body:
+    label: hidden
     type: text_default
-    weight: 0
-    label: above
+    weight: -4
     settings: {  }
     third_party_settings: {  }
   variations:

@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: ebook
 label: eBook
-orderItemType: product_variation
+orderItemType: default
 generateTitle: true

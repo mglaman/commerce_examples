@@ -4,6 +4,7 @@ namespace Drupal\commerce_demo\Resolvers;
 
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\commerce_order\Resolver\OrderTypeResolverInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Resolves order type based on the purchased entity's bundle.
@@ -15,6 +16,23 @@ use Drupal\commerce_order\Resolver\OrderTypeResolverInterface;
 class ProductTypeOrderTypeResolver implements OrderTypeResolverInterface {
 
   /**
+   * The order type storage.
+   *
+   * @var \Drupal\Core\Entity\EntityStorageInterface
+   */
+  protected $orderTypeStorage;
+
+  /**
+   * Constructs a new ProductTypeOrderTypeResolver object.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *    The entity type manager.
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+    $this->orderTypeStorage = $entity_type_manager->getStorage('commerce_order_type');
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function resolve(OrderItemInterface $order_item) {
@@ -22,11 +40,11 @@ class ProductTypeOrderTypeResolver implements OrderTypeResolverInterface {
     $bundle = $order_item->getPurchasedEntity()->bundle();
     switch ($bundle) {
       case 'ebook':
-        return 'digital';
+        return $this->orderTypeStorage->load('digital')->id();
 
       case 't_shirt':
       default:
-        return 'default';
+        return $this->orderTypeStorage->load('default')->id();
     }
   }
 

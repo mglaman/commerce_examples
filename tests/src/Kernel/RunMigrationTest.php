@@ -55,7 +55,7 @@ class RunMigrationTest extends MigrateTestBase {
       if (empty($configured_group_id)) {
         continue;
       }
-      if ($configured_group_id == 'commerce_demo_tshirt') {
+      if ($configured_group_id == 'commerce_demo_tshirt' || $configured_group_id == 'commerce_demo_ebook') {
         $migrations[] = $migration->id();
       }
     }
@@ -85,7 +85,7 @@ class RunMigrationTest extends MigrateTestBase {
   public function testProductsImported() {
     $products = Product::loadMultiple();
     $this->assertNotEmpty($products);
-    $this->assertEquals(2, count($products));
+    $this->assertEquals(5, count($products));
 
     /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
     foreach ($products as $product) {

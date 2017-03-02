@@ -3,7 +3,9 @@
 namespace Drupal\commerce_demo\Resolvers;
 
 use Drupal\commerce_order\Entity\OrderItemInterface;
+use Drupal\commerce_order\Entity\OrderType;
 use Drupal\commerce_order\Resolver\OrderTypeResolverInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 
 /**
@@ -21,13 +23,21 @@ class RolesOrderTypeResolver implements OrderTypeResolverInterface {
   protected $currentUser;
 
   /**
+   * The order type storage.
+   *
+   * @var \Drupal\Core\Entity\EntityStorageInterface
+   */
+  protected $orderTypeStorage;
+
+  /**
    * Constructs a new RolesOrderTypeResolver object.
    *
    * @param \Drupal\Core\Session\AccountProxyInterface $account
    *   The current user.
    */
-  public function __construct(AccountProxyInterface $account) {
+  public function __construct(AccountProxyInterface $account, EntityTypeManagerInterface $entity_type_manager) {
     $this->currentUser = $account;
+    $this->orderTypeStorage = $entity_type_manager->getStorage('commerce_order_type');
   }
 
   /**
@@ -37,7 +47,7 @@ class RolesOrderTypeResolver implements OrderTypeResolverInterface {
     $user = \Drupal::currentUser();
     $roles = $user->getRoles();
 
-    return in_array('b2b', $roles) ? 'b2b' : NULL;
+    return in_array('b2b', $roles) ? $this->orderTypeStorage->load('b2b')->id() : NULL;
   }
 
 }
