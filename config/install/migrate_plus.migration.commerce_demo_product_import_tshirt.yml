@@ -22,7 +22,7 @@ process:
   variations/target_id:
     -
       plugin: migration
-      migration: commerce_demo_product_variation_import
+      migration: commerce_demo_product_variation_import_tshirt
       source: product_variations
     -
       plugin: skip_on_empty
