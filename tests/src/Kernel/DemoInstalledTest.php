@@ -12,12 +12,12 @@ use Drupal\KernelTests\KernelTestBase;
  *
  * @group commerce_demo
  */
-class DemoConfigInstalledTest extends KernelTestBase {
+class DemoInstalledTest extends KernelTestBase {
   public static $modules = [
     'system', 'field', 'options', 'user', 'path', 'text', 'views', 'file',
     'image', 'migrate', 'migrate_plus', 'migrate_tools', 'migrate_source_csv',
     'profile', 'address', 'state_machine', 'inline_entity_form', 'entity',
-    'entity_reference_revisions',
+    'entity_reference_revisions', 'physical',
     'commerce',
     'commerce_price',
     'commerce_store',
@@ -25,6 +25,8 @@ class DemoConfigInstalledTest extends KernelTestBase {
     'commerce_product',
     'commerce_payment',
     'commerce_payment_example',
+    'commerce_shipping',
+    'commerce_checkout',
     'commerce_demo',
   ];
 
@@ -35,13 +37,17 @@ class DemoConfigInstalledTest extends KernelTestBase {
     parent::setUp();
     $this->installSchema('system', 'router');
     $this->installEntitySchema('user');
+    $this->installEntitySchema('commerce_store');
     $this->installEntitySchema('commerce_product_attribute');
     $this->installEntitySchema('commerce_product_attribute_value');
     $this->installEntitySchema('commerce_product_variation');
     $this->installEntitySchema('commerce_product_variation_type');
     $this->installEntitySchema('commerce_product');
     $this->installEntitySchema('commerce_product_type');
+    $this->installEntitySchema('commerce_shipment');
+    $this->installEntitySchema('commerce_shipment_type');
     $this->installConfig(static::$modules);
+
   }
 
   /**
@@ -52,7 +58,6 @@ class DemoConfigInstalledTest extends KernelTestBase {
     $this->assertNotNull($product_type);
     $product_variation_type = ProductVariationType::load('t_shirt');
     $this->assertNotNull($product_variation_type);
-
   }
 
   /**
@@ -61,9 +66,24 @@ class DemoConfigInstalledTest extends KernelTestBase {
   public function testAttributesImported() {
     $color = ProductAttribute::load('color');
     $this->assertNotNull($color);
-
     $size = ProductAttribute::load('size');
     $this->assertNotNull($size);
+  }
+
+  public function testStoreInstalled() {
+    module_load_install('commerce_demo');
+    commerce_demo_install();
+
+    /** @var \Drupal\commerce_store\StoreStorageInterface $store_storage */
+    $store_storage = $this->container->get('entity_type.manager')->getStorage('commerce_store');
+
+    $demo_store = $store_storage->loadDefault();
+    $this->assertEquals('Demo store', $demo_store->label());
+    $this->assertEquals('admin@example.com', $demo_store->getEmail());
+    $this->assertEquals('USD', $demo_store->getDefaultCurrencyCode());
+
+    $demo_address = $demo_store->getAddress();
+    $this->assertEquals('US', $demo_address->getCountryCode());
   }
 
 }

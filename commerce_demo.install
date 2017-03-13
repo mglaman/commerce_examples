@@ -15,6 +15,7 @@ function commerce_demo_install() {
     ],
     'default_currency' => 'USD',
   ];
+  /** @var \Drupal\commerce_store\Entity\StoreInterface $store */
   $store = $store_storage->create($store_values);
   $store->save();
   $store_storage->markAsDefault($store);
