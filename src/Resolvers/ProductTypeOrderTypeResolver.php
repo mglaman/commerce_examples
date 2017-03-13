@@ -26,7 +26,7 @@ class ProductTypeOrderTypeResolver implements OrderTypeResolverInterface {
    * Constructs a new ProductTypeOrderTypeResolver object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *    The entity type manager.
+   *   The entity type manager.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->orderTypeStorage = $entity_type_manager->getStorage('commerce_order_type');

@@ -70,6 +70,9 @@ class DemoInstalledTest extends KernelTestBase {
     $this->assertNotNull($size);
   }
 
+  /**
+   * Tests that the demo store is installed.
+   */
   public function testStoreInstalled() {
     module_load_install('commerce_demo');
     commerce_demo_install();

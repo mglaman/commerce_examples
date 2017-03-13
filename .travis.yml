@@ -118,7 +118,8 @@ before_script:
   - drupal-ti before_script
 
 script:
-  - phpcs --standard=Drupal .
+  - phpcs --standard=Drupal src
+  - phpcs --standard=Drupal tests
   - drupal-ti --include ".travis-script.sh"
   - drupal-ti script
 

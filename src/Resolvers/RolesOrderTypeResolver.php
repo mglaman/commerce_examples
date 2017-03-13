@@ -3,7 +3,6 @@
 namespace Drupal\commerce_demo\Resolvers;
 
 use Drupal\commerce_order\Entity\OrderItemInterface;
-use Drupal\commerce_order\Entity\OrderType;
 use Drupal\commerce_order\Resolver\OrderTypeResolverInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
@@ -34,6 +33,8 @@ class RolesOrderTypeResolver implements OrderTypeResolverInterface {
    *
    * @param \Drupal\Core\Session\AccountProxyInterface $account
    *   The current user.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    */
   public function __construct(AccountProxyInterface $account, EntityTypeManagerInterface $entity_type_manager) {
     $this->currentUser = $account;
