@@ -3,6 +3,12 @@ services:
   # @todo expose a UI to trigger this.
   commerce_demo.revert_demo:
     class: \Drupal\commerce_demo\RevertDemo
+  # Work around for missing default store due to config WTF
+  commerce_demo.demo_store_resolver:
+    class: Drupal\commerce_demo\Resolvers\DemoStoreResolver
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: commerce_store.store_resolver, priority: -500 }
 
   # Resolves order type based on the product type.
   commerce_demo.product_type_order_type_resolver:
