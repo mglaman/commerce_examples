@@ -12,6 +12,16 @@ function commerce_demo_install() {
     'mail' => 'admin@example.com',
     'address' => [
       'country_code' => 'US',
+      'postal_code' => '29616',
+      'locality' => 'Greenville',
+      'address_line1' => 'PO Box 26851',
+      'administrative_area' => 'SC',
+    ],
+    'billing_countries' => [
+      'US',
+    ],
+    'shipping_countries' => [
+      'US',
     ],
     'default_currency' => 'USD',
   ];
