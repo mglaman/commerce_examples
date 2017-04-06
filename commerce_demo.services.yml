@@ -1,4 +1,9 @@
 services:
+  # Demo config revert service.
+  # @todo expose a UI to trigger this.
+  commerce_demo.revert_demo:
+    class: \Drupal\commerce_demo\RevertDemo
+
   # Resolves order type based on the product type.
   commerce_demo.product_type_order_type_resolver:
     class: Drupal\commerce_demo\Resolvers\ProductTypeOrderTypeResolver

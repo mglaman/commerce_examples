@@ -1,48 +1,5 @@
 <?php
 
-use Drupal\Component\Utility\Crypt;
-use Drupal\Core\Config\Config;
-use Drupal\Core\Config\Entity\ConfigDependencyManager;
-use Drupal\Core\Config\FileStorage;
-use Drupal\Core\Config\InstallStorage;
-use Drupal\Core\Config\StorageInterface;
-
-/**
- * Implements hook_rebuild().
- *
- * This will gather all of the configuration that the demo module provides
- * and import or revert it on cache rebuild.
- *
- * This serves as an example in using the `config_updater` service to easily
- * import or revert default configuration.
- */
-function commerce_demo_rebuild() {
-  /** @var \Drupal\commerce\Config\ConfigUpdaterInterface $updater */
-  $updater = \Drupal::service('commerce.config_updater');
-  $default_install_path = drupal_get_path('module', 'commerce_demo') . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
-  $storage = new FileStorage($default_install_path, StorageInterface::DEFAULT_COLLECTION);
-  $data = $storage->readMultiple($storage->listAll(''));
-  $dependency_manager = new ConfigDependencyManager();
-  $config_names = $dependency_manager->setData($data)->sortAll();
-
-  $import = [];
-  $revert = [];
-  foreach ($config_names as $name) {
-    // For some reason this causes errors, skip this config.
-    if (strpos($name, 'migrate_plus.migration_group') !== FALSE) {
-      continue;
-    }
-    if ($updater->loadFromActive($name)) {
-      $revert[] = $name;
-    }
-    else {
-      $import[] = $name;
-    }
-  }
-  $updater->import($import);
-  $updater->revert($revert, FALSE);
-}
-
 /**
  * Implements hook_config_schema_info_alter().
  */
