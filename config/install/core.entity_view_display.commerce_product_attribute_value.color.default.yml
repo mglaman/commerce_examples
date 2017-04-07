@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_attribute.color
+    - field.field.commerce_product_attribute_value.color.field_swatch
+  module:
+    - commerce_demo
+id: commerce_product_attribute_value.color.default
+targetEntityType: commerce_product_attribute_value
+bundle: color
+mode: default
+content:
+  name:
+    label: hidden
+    type: commerce_demo_color_name
+    weight: -5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_swatch: true
