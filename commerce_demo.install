@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\commerce_order\Entity\OrderType;
+use Drupal\commerce_shipping\Entity\ShippingMethod;
 
 function commerce_demo_install() {
   $currency_importer = \Drupal::service('commerce_price.currency_importer');
@@ -43,4 +44,16 @@ function commerce_demo_install() {
 
   $default_order_type->setThirdPartySetting('commerce_shipping', 'shipment_type', 'default');
   $default_order_type->save();
+
+  // Create demo shipping method.
+  $shipping_method = ShippingMethod::create([
+    'stores' => [$store->id()],
+    'name' => 'Table rate',
+    'status' => 1,
+    'plugin' => [
+      'target_plugin_id' => 'demo_table_rate',
+      'target_plugin_configuration' => [],
+    ],
+  ]);
+  $shipping_method->save();
 }
