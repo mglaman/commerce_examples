@@ -5,8 +5,10 @@ dependencies:
     - commerce_product.commerce_product_variation_type.t_shirt
     - field.field.commerce_product_variation.t_shirt.attribute_color
     - field.field.commerce_product_variation.t_shirt.attribute_size
+    - field.field.commerce_product_variation.t_shirt.weight
   module:
     - commerce_price
+    - physical
 id: commerce_product_variation.t_shirt.default
 targetEntityType: commerce_product_variation
 bundle: t_shirt
@@ -14,13 +16,13 @@ mode: default
 content:
   attribute_color:
     type: options_select
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     region: content
   attribute_size:
     type: options_select
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -38,6 +40,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  weight:
+    type: physical_measurement_default
+    weight: 4
+    region: content
+    settings:
+      default_unit: lb
+      allow_unit_change: true
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

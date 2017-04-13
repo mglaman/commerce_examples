@@ -19,7 +19,7 @@ dependencies:
 config_devel:
   install:
     - commerce_order.commerce_order_type.b2b
-    - commerce_order.commerce_order_type.digitall
+    - commerce_order.commerce_order_type.digital
     - commerce_payment.commerce_payment_gateway.example_on_site
     - commerce_product.commerce_product_attribute.color
     - commerce_product.commerce_product_attribute.size

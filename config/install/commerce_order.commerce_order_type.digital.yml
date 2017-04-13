@@ -1,7 +1,11 @@
 langcode: en
 status: true
+dependencies: {  }
 label: Digital
 id: digital
 workflow: order_default
+traits: {  }
 refresh_mode: always
 refresh_frequency: 30
+sendReceipt: null
+receiptBcc: null
