@@ -7,7 +7,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 
 /**
- * Plugin implementation of the 'commerce_product_attributes_overview' formatter.
+ * Plugin implementation of 'commerce_product_attributes_overview' formatter.
  *
  * @FieldFormatter(
  *   id = "commerce_demo_color_name",
@@ -19,6 +19,9 @@ use Drupal\Core\Field\FormatterBase;
  */
 class ColorNameFormatter extends FormatterBase {
 
+  /**
+   * {@inheritdoc}
+   */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
     foreach ($items as $delta => $item) {
@@ -27,13 +30,16 @@ class ColorNameFormatter extends FormatterBase {
         '#template' => '<div style="background: {{ value_style }}; width: 30px; height: 30px;"><span class="hidden">{{ value }}</span></div>',
         '#context' => [
           'value' => $item->value,
-          'value_style' => strtolower($item->value)
+          'value_style' => strtolower($item->value),
         ],
       ];
     }
     return $elements;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
     return $field_definition->getTargetEntityTypeId() == 'commerce_product_attribute_value' && $field_definition->getType() == 'string';
   }

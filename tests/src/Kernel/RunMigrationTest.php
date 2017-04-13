@@ -17,7 +17,7 @@ class RunMigrationTest extends MigrateTestBase {
     'system', 'field', 'options', 'user', 'path', 'text', 'views', 'file',
     'image', 'migrate', 'migrate_plus', 'migrate_tools', 'migrate_source_csv',
     'profile', 'address', 'state_machine', 'inline_entity_form', 'entity',
-    'entity_reference_revisions',
+    'entity_reference_revisions', 'physical',
     'commerce',
     'commerce_price',
     'commerce_store',

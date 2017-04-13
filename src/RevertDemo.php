@@ -7,9 +7,15 @@ use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
 use Drupal\Core\Config\StorageInterface;
 
+/**
+ * Provides a way to easily re-import demo config.
+ */
 class RevertDemo {
 
-  function revertConfig() {
+  /**
+   * Reverts configuration.
+   */
+  public function revertConfig() {
     /** @var \Drupal\commerce\Config\ConfigUpdaterInterface $updater */
     $updater = \Drupal::service('commerce.config_updater');
     $default_install_path = drupal_get_path('module', 'commerce_demo') . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
