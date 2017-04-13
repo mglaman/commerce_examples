@@ -7,5 +7,5 @@ workflow: order_default
 traits: {  }
 refresh_mode: always
 refresh_frequency: 30
-sendReceipt: null
-receiptBcc: null
+sendReceipt: true
+receiptBcc: ''

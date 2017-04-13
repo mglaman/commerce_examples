@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.default
+    - field.storage.commerce_order.shipments
+id: commerce_order.default.shipments
+field_name: shipments
+entity_type: commerce_order
+bundle: default
+label: Shipments
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: null
+settings:
+  handler: 'default:commerce_shipment'
+  handler_settings: {  }
+field_type: entity_reference

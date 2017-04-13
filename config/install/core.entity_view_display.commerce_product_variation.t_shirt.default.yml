@@ -5,6 +5,7 @@ dependencies:
     - commerce_product.commerce_product_variation_type.t_shirt
     - field.field.commerce_product_variation.t_shirt.attribute_color
     - field.field.commerce_product_variation.t_shirt.attribute_size
+    - field.field.commerce_product_variation.t_shirt.weight
   module:
     - commerce_price
 id: commerce_product_variation.t_shirt.default
@@ -41,3 +42,4 @@ hidden:
   attribute_color: true
   attribute_size: true
   product_id: true
+  weight: true

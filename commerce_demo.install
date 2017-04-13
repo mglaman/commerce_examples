@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\commerce_order\Entity\OrderType;
+
 function commerce_demo_install() {
   $currency_importer = \Drupal::service('commerce_price.currency_importer');
   $store_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_store');
@@ -31,8 +33,14 @@ function commerce_demo_install() {
   $store_storage->markAsDefault($store);
 
   // Enable shipping on the default order type.
-  $default_order_type = \Drupal\commerce_order\Entity\OrderType::load('default');
-  $default_order_type->setThirdPartySetting('commerce_shipping', 'shipment_type', 'default');
+  $default_order_type = OrderType::load('default');
   $default_order_type->setThirdPartySetting('commerce_checkout', 'checkout_flow', 'shipping');
+
+  /** @var \Drupal\commerce\ConfigurableFieldManagerInterface $configurable_field_manager */
+  $configurable_field_manager = \Drupal::service('commerce.configurable_field_manager');
+  $field_definition = commerce_shipping_build_shipment_field_definition($default_order_type->id());
+  $configurable_field_manager->createField($field_definition);
+
+  $default_order_type->setThirdPartySetting('commerce_shipping', 'shipment_type', 'default');
   $default_order_type->save();
 }
