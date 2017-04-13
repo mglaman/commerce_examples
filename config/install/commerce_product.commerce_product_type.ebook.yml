@@ -5,3 +5,5 @@ id: ebook
 label: eBook
 description: ''
 variationType: ebook
+injectVariationFields: true
+traits: {  }

@@ -5,3 +5,4 @@ id: ebook
 label: eBook
 orderItemType: default
 generateTitle: true
+traits: {  }

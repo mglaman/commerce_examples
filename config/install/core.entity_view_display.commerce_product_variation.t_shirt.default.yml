@@ -20,6 +20,7 @@ content:
       strip_trailing_zeroes: false
       display_currency_code: false
     third_party_settings: {  }
+    region: content
   sku:
     label: hidden
     type: string
@@ -27,6 +28,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   title:
     label: hidden
     type: string
@@ -34,6 +36,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
 hidden:
   attribute_color: true
   attribute_size: true

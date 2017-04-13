@@ -1,6 +1,8 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - commerce_demo
 id: commerce_demo_ebook
 label: 'Commerce Demo'
 description: 'Imports T-Shirt products into the site.'

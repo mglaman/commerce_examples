@@ -5,3 +5,5 @@ id: t_shirt
 label: T-Shirt
 description: ''
 variationType: t_shirt
+injectVariationFields: true
+traits: {  }

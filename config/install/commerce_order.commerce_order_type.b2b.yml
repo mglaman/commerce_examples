@@ -1,7 +1,11 @@
 langcode: en
 status: true
-label: Business to Business
+dependencies: {  }
+label: 'Business to Business'
 id: b2b
 workflow: order_default
+traits: {  }
 refresh_mode: always
 refresh_frequency: 30
+sendReceipt: true
+receiptBcc: ''

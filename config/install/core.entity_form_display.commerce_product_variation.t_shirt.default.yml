@@ -1,4 +1,3 @@
-uuid: 29199fd7-1478-45de-911e-13760d529c35
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ dependencies:
     - field.field.commerce_product_variation.t_shirt.attribute_size
   module:
     - commerce_price
-_core:
-  default_config_hash: O7Ew_gv1ZDlHCZjilDwDqJsRmh7czcviw_6wBfBRPB8
 id: commerce_product_variation.t_shirt.default
 targetEntityType: commerce_product_variation
 bundle: t_shirt
@@ -20,16 +17,19 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   attribute_size:
     type: options_select
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   price:
     type: commerce_price_default
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   sku:
     type: string_textfield
     weight: 0
@@ -37,6 +37,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   status: true
