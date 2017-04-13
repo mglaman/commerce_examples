@@ -17,5 +17,8 @@
       "drupal/migrate_plus": "~3",
       "drupal/migrate_source_csv": "~2",
       "drupal/migrate_tools": "~3"
+  },
+  "require-dev": {
+      "drupal/config_devel": "~1"
   }
 }

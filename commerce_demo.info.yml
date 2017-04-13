@@ -15,3 +15,46 @@ dependencies:
   - migrate_source_csv
   - commerce_migrate
   - commerce_shipping
+
+config_devel:
+  install:
+    - commerce_order.commerce_order_type.b2b
+    - commerce_order.commerce_order_type.digitall
+    - commerce_payment.commerce_payment_gateway.example_on_site
+    - commerce_product.commerce_product_attribute.color
+    - commerce_product.commerce_product_attribute.size
+    - commerce_product.commerce_product_type.ebook
+    - commerce_product.commerce_product_type.t_shirt
+    - commerce_product.commerce_product_variation_type.ebook
+    - commerce_product.commerce_product_variation_type.t_shirt
+    - core.entity_form_display.commerce_order.digital.default
+    - core.entity_form_display.commerce_product.t_shirt.default
+    - core.entity_form_display.commerce_product_variation.t_shirt.default
+    - core.entity_view_display.commerce_product.ebook.default
+    - core.entity_view_display.commerce_product.t_shirt.default
+    - core.entity_view_display.commerce_product_attribute_value.color.default
+    - core.entity_view_display.commerce_product_variation.ebook.default
+    - core.entity_view_display.commerce_product_variation.t_shirt.default
+    - field.field.commerce_order.digital.order_items
+    - field.field.commerce_product.ebook.body
+    - field.field.commerce_product.ebook.stores
+    - field.field.commerce_product.ebook.variations
+    - field.field.commerce_product.t_shirt.body
+    - field.field.commerce_product.t_shirt.stores
+    - field.field.commerce_product.t_shirt.variations
+    - field.field.commerce_product_attribute_value.color.field_swatch
+    - field.field.commerce_product_variation.t_shirt.attribute_color
+    - field.field.commerce_product_variation.t_shirt.attribute_size
+    - field.field.commerce_product_variation.t_shirt.weight
+    - field.storage.commerce_product_attribute_value.field_swatch
+    - field.storage.commerce_product_variation.attribute_color
+    - field.storage.commerce_product_variation.attribute_size
+    - field.storage.commerce_product_variation.weight
+    - migrate_plus.migration.commerce_demo_product_attribute_color
+    - migrate_plus.migration.commerce_demo_product_attribute_size
+    - migrate_plus.migration.commerce_demo_product_import_ebook
+    - migrate_plus.migration.commerce_demo_product_import_tshirt
+    - migrate_plus.migration.commerce_demo_product_variation_import_ebook
+    - migrate_plus.migration.commerce_demo_product_variation_import_tshirt
+    - migrate_plus.migration_group.commerce_demo_ebook
+    - migrate_plus.migration_group.commerce_demo_tshirt
