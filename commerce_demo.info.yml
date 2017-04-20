@@ -60,3 +60,4 @@ config_devel:
     - migrate_plus.migration_group.commerce_demo_tshirt
     - field.field.commerce_order.default.shipments
     - field.storage.commerce_order.shipments
+    - user.role.store_admin
