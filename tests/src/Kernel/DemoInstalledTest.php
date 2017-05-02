@@ -46,6 +46,7 @@ class DemoInstalledTest extends KernelTestBase {
     $this->installEntitySchema('commerce_product_type');
     $this->installEntitySchema('commerce_shipment');
     $this->installEntitySchema('commerce_shipment_type');
+    $this->installEntitySchema('commerce_shipping_method');
     $this->installConfig(static::$modules);
 
   }
