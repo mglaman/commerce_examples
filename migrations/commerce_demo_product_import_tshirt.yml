@@ -26,7 +26,11 @@ process:
     -
       plugin: skip_on_empty
       method: row
-  body: Description
+  body/value:
+    plugin: fillerama
+  'body/format':
+    plugin: default_value
+    default_value: 'full_html'
 destination:
   plugin: 'entity:commerce_product'
 migration_dependencies:

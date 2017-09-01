@@ -26,7 +26,8 @@ process:
     -
       plugin: skip_on_empty
       method: row
-  body: Description
+  body:
+    plugin: fillerama
 destination:
   plugin: 'entity:commerce_product'
 migration_dependencies:
