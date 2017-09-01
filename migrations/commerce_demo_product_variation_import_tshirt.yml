@@ -34,12 +34,15 @@ process:
     -
       plugin: default_value
       source: Weight
-      default_value: oz
+      default_value: 8
   weight/unit:
     -
       plugin: default_value
       source: WeightUnit
-      default_value: oz
+      default_value: 'oz'
+  field_image/uri:
+    plugin: commerce_demo_file_copy
+    source: Image
 destination:
   plugin: 'entity:commerce_product_variation'
 migration_dependencies:

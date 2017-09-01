@@ -1,25 +1,25 @@
-Name,SKU,Price,Size,Color,Description,Weight,WeightUnit
-"Commerce Guys Hoodie",15080-009-SC,89.5, Small,Cyan, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-SM,89.5, Small,Magenta, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-SY,89.5, Small,Yellow, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-SK,89.5, Small,Black, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-MC,89.5, Medium,Cyan, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-MM,89.5, Medium,Magenta, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-MY,89.5, Medium,Yellow, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-MK,89.5, Medium,Black, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-LC,89.5, Large,Cyan, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-LM,89.5, Large,Magenta, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-LY,89.5, Large,Yellow, "Lorem ipsum", 10, oz
-"Commerce Guys Hoodie",15080-009-LK,89.5, Large,Black, "Lorem ipsum", 10, oz
-"Drupal Commerce Cart Shirt",15090-009-SC,29.5, Small,Cyan, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-SM,29.5, Small,Magenta, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-SY,29.5, Small,Yellow, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-SK,29.5, Small,Black, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-MC,29.5, Medium,Cyan, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-MM,29.5, Medium,Magenta, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-MY,29.5, Medium,Yellow, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-MK,29.5, Medium,Black, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-LC,29.5, Large,Cyan, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-LM,29.5, Large,Magenta, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-LY,29.5, Large,Yellow, "Lorem ipsum", 7, oz
-"Drupal Commerce Cart Shirt",15090-009-LK,29.5, Large,Black, "Lorem ipsum", 7, oz
+Name,SKU,Price,Size,Color,Description,Weight,WeightUnit,Image
+"Commerce Guys Hoodie",15080-009-SC,89.5, Small,Cyan, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-SM,89.5, Small,Magenta, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-SY,89.5, Small,Yellow, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-SK,89.5, Small,Black, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-MC,89.5, Medium,Cyan, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-MM,89.5, Medium,Magenta, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-MY,89.5, Medium,Yellow, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-MK,89.5, Medium,Black, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-LC,89.5, Large,Cyan, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-LM,89.5, Large,Magenta, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-LY,89.5, Large,Yellow, "Lorem ipsum", 10,oz,hoodie.jpg
+"Commerce Guys Hoodie",15080-009-LK,89.5, Large,Black, "Lorem ipsum", 10,oz,hoodie.jpg
+"Drupal Commerce Cart Shirt",15090-009-SC,29.5, Small,Cyan, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-SM,29.5, Small,Magenta, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-SY,29.5, Small,Yellow, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-SK,29.5, Small,Black, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-MC,29.5, Medium,Cyan, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-MM,29.5, Medium,Magenta, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-MY,29.5, Medium,Yellow, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-MK,29.5, Medium,Black, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-LC,29.5, Large,Cyan, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-LM,29.5, Large,Magenta, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-LY,29.5, Large,Yellow, "Lorem ipsum", 7,oz,shirt.jpg
+"Drupal Commerce Cart Shirt",15090-009-LK,29.5, Large,Black, "Lorem ipsum", 7,oz,shirt.jpg

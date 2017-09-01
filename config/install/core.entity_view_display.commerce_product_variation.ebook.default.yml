@@ -10,6 +10,15 @@ targetEntityType: commerce_product_variation
 bundle: ebook
 mode: default
 content:
+  field_image:
+    type: image
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
   price:
     label: inline
     type: commerce_price_calculated
