@@ -76,10 +76,16 @@ class RunMigrationTest extends MigrateTestBase {
       switch ($product->label()) {
         case 'Commerce Guys Hoodie':
           $this->assertEquals(12, count($product->getVariations()));
+          $default_variation = $product->getDefaultVariation();
+          $this->assertEquals(10, $default_variation->get('weight')->number);
+          $this->assertEquals(' oz', $default_variation->get('weight')->unit);
           break;
 
         case 'Drupal Commerce Cart Shirt':
           $this->assertEquals(12, count($product->getVariations()));
+          $default_variation = $product->getDefaultVariation();
+          $this->assertEquals(7, $default_variation->get('weight')->number);
+          $this->assertEquals(' oz', $default_variation->get('weight')->unit);
           break;
       }
     }
