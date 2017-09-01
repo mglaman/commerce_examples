@@ -2,8 +2,6 @@
 
 namespace Drupal\commerce_demo\Plugin\migrate\source;
 
-use Drupal\migrate_source_csv\Plugin\migrate\source\CSV;
-
 /**
  * Source plugin for product content.
  *

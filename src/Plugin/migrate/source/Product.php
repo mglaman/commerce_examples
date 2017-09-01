@@ -2,8 +2,6 @@
 
 namespace Drupal\commerce_demo\Plugin\migrate\source;
 
-use Drupal\commerce_demo\DemoCsv;
-use Drupal\migrate_source_csv\Plugin\migrate\source\CSV;
 use Drupal\migrate\Row;
 
 /**
@@ -14,43 +12,6 @@ use Drupal\migrate\Row;
  * )
  */
 class Product extends CSV {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function initializeIterator() {
-    // File handler using header-rows-respecting extension of SPLFileObject.
-    $file = new DemoCsv($this->configuration['path']);
-
-    // Set basics of CSV behavior based on configuration.
-    $delimiter = !empty($this->configuration['delimiter']) ? $this->configuration['delimiter'] : ',';
-    $enclosure = !empty($this->configuration['enclosure']) ? $this->configuration['enclosure'] : '"';
-    $escape = !empty($this->configuration['escape']) ? $this->configuration['escape'] : '\\';
-    $file->setCsvControl($delimiter, $enclosure, $escape);
-
-    // Figure out what CSV column(s) to use. Use either the header row(s) or
-    // explicitly provided column name(s).
-    if (!empty($this->configuration['header_row_count'])) {
-      $file->setHeaderRowCount($this->configuration['header_row_count']);
-
-      // Find the last header line.
-      $file->rewind();
-      $file->seek($file->getHeaderRowCount() - 1);
-
-      $row = $file->current();
-      foreach ($row as $header) {
-        $header = trim($header);
-        $column_names[] = [$header => $header];
-      }
-      $file->setColumnNames($column_names);
-    }
-    // An explicit list of column name(s) will override any header row(s).
-    if (!empty($this->configuration['column_names'])) {
-      $file->setColumnNames($this->configuration['column_names']);
-    }
-
-    return $file;
-  }
 
   /**
    * {@inheritdoc}

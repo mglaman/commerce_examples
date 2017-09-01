@@ -1,8 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo;
-
-use Drupal\migrate_source_csv\CSVFileObject;
+namespace Drupal\commerce_demo\Demo;
 
 /**
  * Custom CSV file object implementation.

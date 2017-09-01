@@ -15,7 +15,7 @@ use Drupal\KernelTests\KernelTestBase;
 class DemoInstalledTest extends KernelTestBase {
   public static $modules = [
     'system', 'field', 'options', 'user', 'path', 'text', 'views', 'file',
-    'image', 'migrate', 'migrate_plus', 'migrate_tools', 'migrate_source_csv',
+    'image', 'migrate',
     'profile', 'address', 'state_machine', 'inline_entity_form', 'entity',
     'entity_reference_revisions', 'physical',
     'commerce',
@@ -48,7 +48,6 @@ class DemoInstalledTest extends KernelTestBase {
     $this->installEntitySchema('commerce_shipment_type');
     $this->installEntitySchema('commerce_shipping_method');
     $this->installConfig(static::$modules);
-
   }
 
   /**

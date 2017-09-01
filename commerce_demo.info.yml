@@ -10,10 +10,6 @@ dependencies:
   - commerce_product
   - commerce_payment_example
   - migrate
-  - migrate_plus
-  - migrate_tools
-  - migrate_source_csv
-  - commerce_migrate
   - commerce_shipping
 
 config_devel:

@@ -15,7 +15,7 @@ class RunMigrationTest extends MigrateTestBase {
 
   public static $modules = [
     'system', 'field', 'options', 'user', 'path', 'text', 'views', 'file',
-    'image', 'migrate', 'migrate_plus', 'migrate_tools', 'migrate_source_csv',
+    'image', 'migrate',
     'profile', 'address', 'state_machine', 'inline_entity_form', 'entity',
     'entity_reference_revisions', 'physical',
     'commerce',
@@ -25,7 +25,6 @@ class RunMigrationTest extends MigrateTestBase {
     'commerce_product',
     'commerce_payment',
     'commerce_payment_example',
-    'commerce_migrate',
     'commerce_demo',
   ];
 
@@ -36,6 +35,7 @@ class RunMigrationTest extends MigrateTestBase {
     parent::setUp();
     $this->installSchema('system', 'router');
     $this->installEntitySchema('user');
+    $this->installEntitySchema('commerce_store');
     $this->installEntitySchema('commerce_product_attribute');
     $this->installEntitySchema('commerce_product_attribute_value');
     $this->installEntitySchema('commerce_product_variation');
@@ -44,23 +44,7 @@ class RunMigrationTest extends MigrateTestBase {
     $this->installEntitySchema('commerce_product_type');
     $this->installConfig(static::$modules);
 
-    /** @var \Drupal\migrate_plus\Plugin\MigrationConfigEntityPluginManager $manager */
-    $manager = \Drupal::service('plugin.manager.config_entity_migration');
-    $plugins = $manager->createInstances([]);
-    $migrations = [];
-
-    /** @var \Drupal\migrate_plus\Entity\Migration $migration */
-    foreach ($plugins as $id => $migration) {
-      $configured_group_id = $migration->get('migration_group');
-      if (empty($configured_group_id)) {
-        continue;
-      }
-      if ($configured_group_id == 'commerce_demo_tshirt' || $configured_group_id == 'commerce_demo_ebook') {
-        $migrations[] = $migration->id();
-      }
-    }
-
-    $this->executeMigrations($migrations);
+    $this->container->get('commerce_demo.migration_runner')->run();
   }
 
   /**

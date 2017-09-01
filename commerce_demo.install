@@ -56,4 +56,6 @@ function commerce_demo_install() {
     ],
   ]);
   $shipping_method->save();
+
+  \Drupal::getContainer()->get('commerce_demo.migration_runner')->run();
 }

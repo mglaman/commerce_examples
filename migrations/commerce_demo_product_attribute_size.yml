@@ -1,13 +1,11 @@
-langcode: en
-status: true
-dependencies: {  }
 id: commerce_demo_product_attribute_size
+status: true
 migration_tags:
   - commerce_demo
-migration_group: commerce_demo_tshirt
-label: 'Product size attribute values.'
 source:
   plugin: commerce_demo_csv_attribute_values
+  path: data/demo_t_shirts.csv
+  header_row_count: 1
   keys:
     - Size
 process:

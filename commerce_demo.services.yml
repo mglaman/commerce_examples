@@ -1,4 +1,8 @@
 services:
+  commerce_demo.migration_runner:
+    class: Drupal\commerce_demo\Demo\MigrationRunner
+    arguments: ['@plugin.manager.migration']
+
   # Demo config revert service.
   # @todo expose a UI to trigger this.
   commerce_demo.revert_demo:

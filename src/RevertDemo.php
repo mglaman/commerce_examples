@@ -40,6 +40,9 @@ class RevertDemo {
     }
     $updater->import($import);
     $updater->revert($revert, FALSE);
+
+    $runner = \Drupal::getContainer()->get('commerce_demo.migration_runner');
+    $runner->run();
   }
 
 }
