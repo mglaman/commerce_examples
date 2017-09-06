@@ -1,0 +1,23 @@
+id: commerce_demo_import_tshirt_images
+status: true
+migration_tags:
+  - commerce_demo
+source:
+  plugin: csv
+  path: data/demo_ebooks.csv
+  header_row_count: 1
+  keys:
+    - Image
+process:
+  _skip:
+    plugin: skip_on_empty
+    source: Image
+    method: row
+  uri:
+    plugin: commerce_demo_file_copy
+    source: Image
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:file'

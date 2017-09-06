@@ -48,6 +48,21 @@ class RunMigrationTest extends MigrateTestBase {
   }
 
   /**
+   * Tests images imported.
+   */
+  public function testImagesImported() {
+    $images = $this->container->get('entity_type.manager')->getStorage('file')->loadMultiple();
+    $this->assertNotEmpty($images);
+
+    /** @var \Drupal\commerce_product\ProductVariationStorageInterface $variation_storage */
+    $variation_storage = $this->container->get('entity_type.manager')->getStorage('commerce_product_variation');
+    $d8cookbook = $variation_storage->loadByProperties(['sku' => 'AAABBCCCDDD']);
+    $d8cookbook = reset($d8cookbook);
+    $this->assertNotEmpty($d8cookbook);
+    $this->assertFalse($d8cookbook->get('field_image')->isEmpty());
+  }
+
+  /**
    * Tests around attributes.
    */
   public function testAttributesImported() {

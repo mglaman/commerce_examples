@@ -2,6 +2,7 @@
 
 namespace Drupal\commerce_demo\Demo;
 
+use Drupal\commerce_demo\DemoMigrateMessage;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessage;
@@ -52,11 +53,13 @@ class MigrationRunner {
    */
   protected function execute($method_name) {
     $migration_ids = [
+      'commerce_demo_import_tshirt_images',
       'commerce_demo_product_attribute_color',
       'commerce_demo_product_attribute_size',
       'commerce_demo_product_variation_import_tshirt',
       'commerce_demo_product_import_tshirt',
 
+      'commerce_demo_import_ebook_images',
       'commerce_demo_product_variation_import_ebook',
       'commerce_demo_product_import_ebook',
     ];
@@ -66,9 +69,11 @@ class MigrationRunner {
       if (!$migration = $this->manager->createInstance($migration_id)) {
         throw new PluginNotFoundException($migration_id);
       }
-      $migrate_executable = (new MigrateExecutable($migration, new MigrateMessage()));
+      $messages = new DemoMigrateMessage();
+      $migrate_executable = (new MigrateExecutable($migration, $messages));
       $result = call_user_func_array([$migrate_executable, $method_name], []);
       if ($result != MigrationInterface::RESULT_COMPLETED) {
+        print_r($messages->getMessages());
         throw new \Exception($migration->id() . ' failed');
       }
     });

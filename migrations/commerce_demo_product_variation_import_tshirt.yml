@@ -40,12 +40,14 @@ process:
       plugin: default_value
       source: WeightUnit
       default_value: 'oz'
-  field_image/uri:
-    plugin: commerce_demo_file_copy
-    source: Image
+#  field_image:
+#    plugin: migration_lookup
+#    migration: commerce_demo_import_tshirt_images
+#    source: Image
 destination:
   plugin: 'entity:commerce_product_variation'
 migration_dependencies:
   required:
+    - commerce_demo_import_tshirt_images
     - commerce_demo_product_attribute_color
     - commerce_demo_product_attribute_size

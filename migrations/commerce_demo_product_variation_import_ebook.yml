@@ -20,9 +20,12 @@ process:
   price/currency_code:
     plugin: default_value
     default_value: USD
-  field_image/uri:
-    plugin: commerce_demo_file_copy
-    source: Image
+#  field_image:
+#    plugin: migration_lookup
+#    migration: commerce_demo_import_ebook_images
+#    source: Image
 destination:
   plugin: 'entity:commerce_product_variation'
-migration_dependencies: {  }
+migration_dependencies:
+  required:
+    - commerce_demo_import_ebook_images
