@@ -8,6 +8,8 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
 
 /**
+ * Process plugin to use Fillerama.io content.
+ *
  * @MigrateProcessPlugin(
  *   id = "fillerama"
  * )
@@ -18,7 +20,7 @@ class Fillerama extends ProcessPluginBase {
   protected $fillerHeadings;
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -39,7 +41,7 @@ class Fillerama extends ProcessPluginBase {
     $data[] = $this->getRandomHeader();
     $data[] = $this->getRandomParagraph();
     $data[] = '';
-    $data[] = $this->getRandomParagraph(mt_rand(5,10));
+    $data[] = $this->getRandomParagraph(mt_rand(5, 10));
 
     return implode('', $data);
   }
@@ -57,10 +59,16 @@ class Fillerama extends ProcessPluginBase {
     return $this->moduleHandler;
   }
 
+  /**
+   * Get a random header text.
+   */
   protected function getRandomHeader($type = 'h2') {
     return "<$type>" . $this->fillerHeadings[array_rand($this->fillerHeadings)]['header'] . "</$type>";
   }
 
+  /**
+   * Get a random paragraph text.
+   */
   protected function getRandomParagraph($max_lines = 4) {
     $sentences = [];
 
