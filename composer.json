@@ -12,7 +12,6 @@
   },
   "require": {
       "drupal/commerce": "^2",
-      "drupal/commerce_migrate": "2.x-dev",
       "drupal/commerce_shipping": "^2"
   },
   "require-dev": {
