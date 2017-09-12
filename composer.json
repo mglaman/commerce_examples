@@ -11,9 +11,9 @@
     "source": "http://cgit.drupalcode.org/commerce_demo"
   },
   "require": {
-      "drupal/commerce": "2.x-dev",
+      "drupal/commerce": "^2",
       "drupal/commerce_migrate": "2.x-dev",
-      "drupal/commerce_shipping": "2.x-dev"
+      "drupal/commerce_shipping": "^2"
   },
   "require-dev": {
       "drupal/config_devel": "~1"
