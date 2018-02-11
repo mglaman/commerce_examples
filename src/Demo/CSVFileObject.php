@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Demo;
+namespace Drupal\commerce_examples\Demo;
 
 /**
  * Defines a CSV file object.

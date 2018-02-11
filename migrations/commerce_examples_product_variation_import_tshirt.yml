@@ -1,7 +1,7 @@
-id: commerce_demo_product_variation_import_tshirt
+id: commerce_examples_product_variation_import_tshirt
 status: true
 migration_tags:
-  - commerce_demo
+  - commerce_examples
 source:
   plugin: csv
   path: data/demo_t_shirts.csv
@@ -23,12 +23,12 @@ process:
   attribute_size/target_id:
     -
       plugin: migration
-      migration: commerce_demo_product_attribute_size
+      migration: commerce_examples_product_attribute_size
       source: Size
   attribute_color/target_id:
     -
       plugin: migration
-      migration: commerce_demo_product_attribute_color
+      migration: commerce_examples_product_attribute_color
       source: Color
   weight/number:
     -
@@ -44,5 +44,5 @@ destination:
   plugin: 'entity:commerce_product_variation'
 migration_dependencies:
   required:
-    - commerce_demo_product_attribute_color
-    - commerce_demo_product_attribute_size
+    - commerce_examples_product_attribute_color
+    - commerce_examples_product_attribute_size

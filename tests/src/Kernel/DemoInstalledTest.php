@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\commerce_demo\Kernel;
+namespace Drupal\Tests\commerce_examples\Kernel;
 
 use Drupal\commerce_product\Entity\ProductType;
 use Drupal\commerce_product\Entity\ProductAttribute;
@@ -10,7 +10,7 @@ use Drupal\KernelTests\KernelTestBase;
 /**
  * Tests that config installed.
  *
- * @group commerce_demo
+ * @group commerce_examples
  */
 class DemoInstalledTest extends KernelTestBase {
   public static $modules = [
@@ -27,7 +27,7 @@ class DemoInstalledTest extends KernelTestBase {
     'commerce_payment_example',
     'commerce_shipping',
     'commerce_checkout',
-    'commerce_demo',
+    'commerce_examples',
   ];
 
   /**
@@ -74,8 +74,8 @@ class DemoInstalledTest extends KernelTestBase {
    * Tests that the demo store is installed.
    */
   public function testStoreInstalled() {
-    module_load_install('commerce_demo');
-    commerce_demo_install();
+    module_load_install('commerce_examples');
+    commerce_examples_install();
 
     /** @var \Drupal\commerce_store\StoreStorageInterface $store_storage */
     $store_storage = $this->container->get('entity_type.manager')->getStorage('commerce_store');

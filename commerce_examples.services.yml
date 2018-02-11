@@ -1,40 +1,40 @@
 services:
-  commerce_demo.migration_runner:
-    class: Drupal\commerce_demo\Demo\MigrationRunner
+  commerce_examples.migration_runner:
+    class: Drupal\commerce_examples\Demo\MigrationRunner
     arguments: ['@plugin.manager.migration']
 
   # Demo config revert service.
   # @todo expose a UI to trigger this.
-  commerce_demo.revert_demo:
-    class: \Drupal\commerce_demo\RevertDemo
+  commerce_examples.revert_demo:
+    class: \Drupal\commerce_examples\RevertDemo
   # Work around for missing default store due to config WTF
-  commerce_demo.demo_store_resolver:
-    class: Drupal\commerce_demo\Resolvers\DemoStoreResolver
+  commerce_examples.demo_store_resolver:
+    class: Drupal\commerce_examples\Resolvers\DemoStoreResolver
     arguments: ['@entity_type.manager']
     tags:
       - { name: commerce_store.store_resolver, priority: -500 }
 
   # Resolves order type based on the product type.
-  commerce_demo.product_type_order_type_resolver:
-    class: Drupal\commerce_demo\Resolvers\ProductTypeOrderTypeResolver
+  commerce_examples.product_type_order_type_resolver:
+    class: Drupal\commerce_examples\Resolvers\ProductTypeOrderTypeResolver
     arguments: ['@entity_type.manager']
     tags:
       - { name: commerce_order.order_type_resolver, priority: 100 }
   # Resolves order type based on roles. This has a priority of 200 so that it runs before product type and default.
-  commerce_demo.roles_order_type_resolver:
-    class: Drupal\commerce_demo\Resolvers\RolesOrderTypeResolver
+  commerce_examples.roles_order_type_resolver:
+    class: Drupal\commerce_examples\Resolvers\RolesOrderTypeResolver
     arguments: ['@current_user', '@entity_type.manager']
     tags:
       - { name: commerce_order.order_type_resolver, priority: 200 }
   # Resolves prices for products based on a query parameter.
-  commerce_demo.url_query_price_resolver:
-    class: Drupal\commerce_demo\Resolvers\UrlQueryPriceResolver
+  commerce_examples.url_query_price_resolver:
+    class: Drupal\commerce_examples\Resolvers\UrlQueryPriceResolver
     arguments: ['@request_stack']
     tags:
       - { name: commerce_price.price_resolver, priority: 600 }
   # Order refresh process to apply taxes.
   # We set the priority very low so it calculates last.
-  commerce_demo.order_process.taxes:
-    class: Drupal\commerce_demo\OrderProcessor\ApplyTaxAdjustments
+  commerce_examples.order_process.taxes:
+    class: Drupal\commerce_examples\OrderProcessor\ApplyTaxAdjustments
     tags:
       - { name: commerce_order.order_processor, priority: -300 }

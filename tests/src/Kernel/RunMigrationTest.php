@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\commerce_demo\Kernel;
+namespace Drupal\Tests\commerce_examples\Kernel;
 
 use Drupal\commerce_product\Entity\Product;
 use Drupal\commerce_product\Entity\ProductAttribute;
@@ -9,7 +9,7 @@ use Drupal\Tests\migrate\Kernel\MigrateTestBase;
 /**
  * Tests that the demo migration runs.
  *
- * @group commerce_demo
+ * @group commerce_examples
  */
 class RunMigrationTest extends MigrateTestBase {
 
@@ -25,7 +25,7 @@ class RunMigrationTest extends MigrateTestBase {
     'commerce_product',
     'commerce_payment',
     'commerce_payment_example',
-    'commerce_demo',
+    'commerce_examples',
   ];
 
   /**
@@ -44,7 +44,7 @@ class RunMigrationTest extends MigrateTestBase {
     $this->installEntitySchema('commerce_product_type');
     $this->installConfig(static::$modules);
 
-    $this->container->get('commerce_demo.migration_runner')->run();
+    $this->container->get('commerce_examples.migration_runner')->run();
   }
 
   /**

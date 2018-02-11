@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Plugin\Field\FieldFormatter;
+namespace Drupal\commerce_examples\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -10,7 +10,7 @@ use Drupal\Core\Field\FormatterBase;
  * Plugin implementation of 'commerce_product_attributes_overview' formatter.
  *
  * @FieldFormatter(
- *   id = "commerce_demo_color_name",
+ *   id = "commerce_examples_color_name",
  *   label = @Translation("Color name"),
  *   field_types = {
  *     "string",

@@ -3,7 +3,7 @@
 use Drupal\commerce_order\Entity\OrderType;
 use Drupal\commerce_shipping\Entity\ShippingMethod;
 
-function commerce_demo_install() {
+function commerce_examples_install() {
   $currency_importer = \Drupal::service('commerce_price.currency_importer');
   $store_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_store');
 
@@ -57,5 +57,5 @@ function commerce_demo_install() {
   ]);
   $shipping_method->save();
 
-  \Drupal::getContainer()->get('commerce_demo.migration_runner')->run();
+  // \Drupal::getContainer()->get('commerce_examples.migration_runner')->run();
 }

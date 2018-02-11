@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Demo;
+namespace Drupal\commerce_examples\Demo;
 
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\migrate\MigrateExecutable;
@@ -52,13 +52,13 @@ class MigrationRunner {
    */
   protected function execute($method_name) {
     $migration_ids = [
-      'commerce_demo_product_attribute_color',
-      'commerce_demo_product_attribute_size',
-      'commerce_demo_product_variation_import_tshirt',
-      'commerce_demo_product_import_tshirt',
+      'commerce_examples_product_attribute_color',
+      'commerce_examples_product_attribute_size',
+      'commerce_examples_product_variation_import_tshirt',
+      'commerce_examples_product_import_tshirt',
 
-      'commerce_demo_product_variation_import_ebook',
-      'commerce_demo_product_import_ebook',
+      'commerce_examples_product_variation_import_ebook',
+      'commerce_examples_product_import_ebook',
     ];
 
     array_walk($migration_ids, function ($migration_id) use ($method_name) {

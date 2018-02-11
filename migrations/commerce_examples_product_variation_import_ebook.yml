@@ -1,7 +1,7 @@
-id: commerce_demo_product_variation_import_ebook
+id: commerce_examples_product_variation_import_ebook
 status: true
 migration_tags:
-  - commerce_demo
+  - commerce_examples
 source:
   plugin: csv
   path: data/demo_ebooks.csv

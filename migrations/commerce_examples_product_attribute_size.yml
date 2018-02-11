@@ -1,18 +1,18 @@
-id: commerce_demo_product_attribute_color
+id: commerce_examples_product_attribute_size
 status: true
 migration_tags:
-  - commerce_demo
+  - commerce_examples
 source:
-  plugin: commerce_demo_csv_attribute_values
+  plugin: commerce_examples_csv_attribute_values
   path: data/demo_t_shirts.csv
   header_row_count: 1
   keys:
-    - Color
+    - Size
 process:
-  name: Color
+  name: Size
   attribute:
     plugin: default_value
-    default_value: color
+    default_value: size
 destination:
   plugin: 'entity:commerce_product_attribute_value'
 migration_dependencies: {  }

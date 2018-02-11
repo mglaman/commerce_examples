@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Demo;
+namespace Drupal\commerce_examples\Demo;
 
 /**
  * Custom CSV file object implementation.

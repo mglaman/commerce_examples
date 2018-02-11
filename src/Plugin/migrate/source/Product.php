@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Plugin\migrate\source;
+namespace Drupal\commerce_examples\Plugin\migrate\source;
 
 use Drupal\migrate\Row;
 
@@ -8,7 +8,7 @@ use Drupal\migrate\Row;
  * Source plugin for product content.
  *
  * @MigrateSource(
- *   id = "commerce_demo_product_csv"
+ *   id = "commerce_examples_product_csv"
  * )
  */
 class Product extends CSV {

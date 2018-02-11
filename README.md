@@ -4,18 +4,18 @@ Commerce Examples [![Build Status]
 An examples module for Commerce 2.x. Provides some usually defaults and a sample
 migration.
 
-For demo, see https://github.com/bojanz/commerce_demo
+For demo, see https://github.com/bojanz/commerce_examples
 
 ## Installation
 
 Add this private repository to the composer configuration repositories list:
 ```
-composer config repositories.mglaman vcs https://github.com/mglaman/commerce_demo
+composer config repositories.mglaman vcs https://github.com/mglaman/commerce_examples
 ```
 
 Then, install this module:
 ```
-composer require drupal/commerce_demo:dev-master
+composer require drupal/commerce_examples:dev-master
 ```
 
 ## Features

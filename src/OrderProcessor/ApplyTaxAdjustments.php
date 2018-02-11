@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\OrderProcessor;
+namespace Drupal\commerce_examples\OrderProcessor;
 
 use Drupal\commerce_order\Adjustment;
 use Drupal\commerce_order\Entity\OrderInterface;

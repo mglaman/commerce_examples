@@ -1,6 +1,6 @@
-name: Commerce Demo
+name: Commerce Examples
 type: module
-description: Commerce demo stuff
+description: Commerce example stuff
 core: 8.x
 package: Custom
 dependencies:
@@ -46,14 +46,14 @@ config_devel:
     - field.storage.commerce_product_variation.attribute_color
     - field.storage.commerce_product_variation.attribute_size
     - field.storage.commerce_product_variation.weight
-    - migrate_plus.migration.commerce_demo_product_attribute_color
-    - migrate_plus.migration.commerce_demo_product_attribute_size
-    - migrate_plus.migration.commerce_demo_product_import_ebook
-    - migrate_plus.migration.commerce_demo_product_import_tshirt
-    - migrate_plus.migration.commerce_demo_product_variation_import_ebook
-    - migrate_plus.migration.commerce_demo_product_variation_import_tshirt
-    - migrate_plus.migration_group.commerce_demo_ebook
-    - migrate_plus.migration_group.commerce_demo_tshirt
+    - migrate_plus.migration.commerce_examples_product_attribute_color
+    - migrate_plus.migration.commerce_examples_product_attribute_size
+    - migrate_plus.migration.commerce_examples_product_import_ebook
+    - migrate_plus.migration.commerce_examples_product_import_tshirt
+    - migrate_plus.migration.commerce_examples_product_variation_import_ebook
+    - migrate_plus.migration.commerce_examples_product_variation_import_tshirt
+    - migrate_plus.migration_group.commerce_examples_ebook
+    - migrate_plus.migration_group.commerce_examples_tshirt
     - field.field.commerce_order.default.shipments
     - field.storage.commerce_order.shipments
     - user.role.store_admin

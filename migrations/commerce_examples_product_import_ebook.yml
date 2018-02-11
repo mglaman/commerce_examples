@@ -1,11 +1,11 @@
-id: commerce_demo_product_import_tshirt
+id: commerce_examples_product_import_ebook
 status: true
 migration_tags:
-  - commerce_demo
+  - commerce_examples
 source:
-  plugin: commerce_demo_product_csv
-  path: data/demo_t_shirts.csv
-#  file_class: Drupal\commerce_demo\Demo\DemoCsv
+  plugin: commerce_examples_product_csv
+  path: data/demo_ebooks.csv
+  file_class: Drupal\commerce_examples\Demo\DemoCsv
   header_row_count: 1
   keys:
     - Name
@@ -13,7 +13,7 @@ process:
   title: Name
   type:
     plugin: default_value
-    default_value: t_shirt
+    default_value: ebook
   stores:
     plugin: default_value
     default_value:
@@ -21,18 +21,15 @@ process:
   variations/target_id:
     -
       plugin: migration
-      migration: commerce_demo_product_variation_import_tshirt
+      migration: commerce_examples_product_variation_import_ebook
       source: product_variations
     -
       plugin: skip_on_empty
       method: row
-  body/value:
+  body:
     plugin: fillerama
-  'body/format':
-    plugin: default_value
-    default_value: 'full_html'
 destination:
   plugin: 'entity:commerce_product'
 migration_dependencies:
   required:
-    - commerce_demo_product_variation_import_tshirt
+    - commerce_examples_product_variation_import_ebook

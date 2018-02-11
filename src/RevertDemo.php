@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo;
+namespace Drupal\commerce_examples;
 
 use Drupal\Core\Config\Entity\ConfigDependencyManager;
 use Drupal\Core\Config\FileStorage;
@@ -18,7 +18,7 @@ class RevertDemo {
   public function revertConfig() {
     /** @var \Drupal\commerce\Config\ConfigUpdaterInterface $updater */
     $updater = \Drupal::service('commerce.config_updater');
-    $default_install_path = drupal_get_path('module', 'commerce_demo') . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
+    $default_install_path = drupal_get_path('module', 'commerce_examples') . '/' . InstallStorage::CONFIG_INSTALL_DIRECTORY;
     $storage = new FileStorage($default_install_path, StorageInterface::DEFAULT_COLLECTION);
     $data = $storage->readMultiple($storage->listAll(''));
     $dependency_manager = new ConfigDependencyManager();
@@ -41,7 +41,7 @@ class RevertDemo {
     $updater->import($import);
     $updater->revert($revert, FALSE);
 
-    $runner = \Drupal::getContainer()->get('commerce_demo.migration_runner');
+    $runner = \Drupal::getContainer()->get('commerce_examples.migration_runner');
     $runner->run();
   }
 

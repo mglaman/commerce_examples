@@ -1,14 +1,14 @@
 {
-  "name": "drupal/commerce_demo",
+  "name": "drupal/commerce_examples",
   "type": "drupal-module",
   "description": "Commerce demo stuff",
   "keywords": ["Drupal"],
   "license": "GPL-2.0+",
-  "homepage": "https://www.drupal.org/project/commerce_demo",
+  "homepage": "https://www.drupal.org/project/commerce_examples",
   "minimum-stability": "dev",
   "support": {
-    "issues": "http://drupal.org/project/issues/commerce_demo",
-    "source": "http://cgit.drupalcode.org/commerce_demo"
+    "issues": "http://drupal.org/project/issues/commerce_examples",
+    "source": "http://cgit.drupalcode.org/commerce_examples"
   },
   "require": {
       "drupal/commerce": "^2",

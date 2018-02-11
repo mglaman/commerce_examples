@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Plugin\migrate\source;
+namespace Drupal\commerce_examples\Plugin\migrate\source;
 
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\Plugin\migrate\source\SourcePluginBase;
@@ -65,7 +65,7 @@ class CSV extends SourcePluginBase {
       throw new MigrateException('You must declare "keys" as a unique array of fields in your source settings.');
     }
 
-    $this->fileClass = empty($configuration['file_class']) ? 'Drupal\commerce_demo\Demo\CSVFileObject' : $configuration['file_class'];
+    $this->fileClass = empty($configuration['file_class']) ? 'Drupal\commerce_examples\Demo\CSVFileObject' : $configuration['file_class'];
   }
 
   /**

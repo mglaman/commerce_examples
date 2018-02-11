@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\commerce_demo\Plugin\migrate\source;
+namespace Drupal\commerce_examples\Plugin\migrate\source;
 
 /**
  * Source plugin for product content.
  *
  * @MigrateSource(
- *   id = "commerce_demo_csv_attribute_values"
+ *   id = "commerce_examples_csv_attribute_values"
  * )
  */
 class ProductAttribute extends CSV {

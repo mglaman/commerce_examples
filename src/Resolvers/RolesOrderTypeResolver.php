@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Resolvers;
+namespace Drupal\commerce_examples\Resolvers;
 
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\commerce_order\Resolver\OrderTypeResolverInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Plugin\migrate\process;
+namespace Drupal\commerce_examples\Plugin\migrate\process;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\migrate\MigrateExecutableInterface;
@@ -25,7 +25,7 @@ class Fillerama extends ProcessPluginBase {
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $module_handler = $this->getModuleHandler();
-    $module = $module_handler->getModule('commerce_demo');
+    $module = $module_handler->getModule('commerce_examples');
     $filler = Json::decode(file_get_contents(DRUPAL_ROOT . '/' . $module->getPath() . '/data/fillerama.json'));
 
     $this->fillerQuotes = $filler['db'];

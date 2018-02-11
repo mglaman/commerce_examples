@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_demo\Plugin\Commerce\ShippingMethod;
+namespace Drupal\commerce_examples\Plugin\Commerce\ShippingMethod;
 
 use Drupal\commerce_price\Price;
 use Drupal\commerce_shipping\Entity\ShipmentInterface;
