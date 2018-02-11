@@ -1,8 +1,10 @@
-Commerce Demo [![Build Status](https://travis-ci.org/mglaman/commerce_demo.svg?branch=master)](https://travis-ci.org/mglaman/commerce_demo)
+Commerce Examples [![Build Status]
 ===============================
 
-A demo module for Commerce 2.x. Provides some usually defaults and a sample
+An examples module for Commerce 2.x. Provides some usually defaults and a sample
 migration.
+
+For demo, see https://github.com/bojanz/commerce_demo
 
 ## Installation
 
@@ -14,14 +16,6 @@ composer config repositories.mglaman vcs https://github.com/mglaman/commerce_dem
 Then, install this module:
 ```
 composer require drupal/commerce_demo:dev-master
-```
-
-You will need run the migrations using Drush
-
-```
-cd /path/to/drupal
-drush cc drush
-drush mi --all
 ```
 
 ## Features
