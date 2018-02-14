@@ -38,3 +38,8 @@ services:
     class: Drupal\commerce_examples\OrderProcessor\ApplyTaxAdjustments
     tags:
       - { name: commerce_order.order_processor, priority: -300 }
+
+
+  commerce_examples.generate_order:
+    class: Drupal\commerce_examples\GenerateOrder
+    arguments: ['@entity_type.manager', '@http_client', '@commerce_price.rounder']

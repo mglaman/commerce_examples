@@ -57,5 +57,5 @@ function commerce_examples_install() {
   ]);
   $shipping_method->save();
 
-  // \Drupal::getContainer()->get('commerce_examples.migration_runner')->run();
+  \Drupal::getContainer()->get('commerce_examples.migration_runner')->run();
 }
