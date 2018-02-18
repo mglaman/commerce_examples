@@ -85,23 +85,17 @@ class GenerateOrder {
       $when->modify('-1 month');
     }
 
-    $order = $this->generateOrder();
-    $order->setPlacedTime($when->getTimestamp());
-    $order->setCreatedTime($when->getTimestamp());
-    $order->setBillingProfile($this->generateBillingProfile());
-    $order->save();
+    $person = $this->getRandomUser();
+    $address = $this->getRandomAddress();
 
-    $workflow = $order->getState()->getWorkflow();
-    $order->getState()->applyTransition($workflow->getTransition('place'));
-    $order->save();
-  }
-
-  public function generateOrder() {
     /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
     $order = $this->orderStorage->create([
       'uid' => 0,
       'type' => 'default',
     ]);
+    $order->setEmail($person['email']);
+    $order->setPlacedTime($when->getTimestamp());
+    $order->setCreatedTime($when->getTimestamp());
     $order->setStore(Store::load(1));
     $order->setIpAddress($this->getRandomIp());
 
@@ -118,12 +112,6 @@ class GenerateOrder {
 
     $order->setItems($order_items);
     $order->recalculateTotalPrice();
-    return $order;
-  }
-
-  public function generateBillingProfile() {
-    $person = $this->getRandomUser();
-    $address = $this->getRandomAddress();
 
     $profile = Profile::create([
       'type' => 'customer',
@@ -139,8 +127,13 @@ class GenerateOrder {
       ],
       'uid' => 0,
     ]);
+    $profile->save();
+    $order->setBillingProfile($profile);
+    $order->save();
 
-    return $profile;
+    $workflow = $order->getState()->getWorkflow();
+    $order->getState()->applyTransition($workflow->getTransition('place'));
+    $order->save();
   }
 
   /**
