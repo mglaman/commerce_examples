@@ -4,7 +4,7 @@ Commerce Examples [![Build Status]
 An examples module for Commerce 2.x. Provides some usually defaults and a sample
 migration.
 
-For demo, see https://github.com/bojanz/commerce_examples
+For demo, see https://github.com/bojanz/commerce_demo
 
 ## Installation
 
